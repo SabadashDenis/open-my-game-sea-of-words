@@ -1,16 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using SoW.Scripts.Core.UI.Screen.Game.Views.LetterView;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SoW.Scripts.Core.UI.Screen.Game.Views
 {
     public class LetterInputCircle : View
     {
-        [SerializeField] private LetterView letterViewPrefab;
+        [FormerlySerializedAs("letterViewPrefab")] [SerializeField] private LetterViewBase letterViewBasePrefab;
         [SerializeField] private Transform lettersRoot;
         [SerializeField] private float offsetFromCenter;
         
-        private List<LetterView> _letterViews = new();
+        private List<LetterViewBase> _letterViews = new();
+        
+        public event Action<char, bool> OnInputChanged = delegate { };
         
         [FoldoutGroup("API"), Button]
         public void SetupLetters(string lettersStr)
@@ -23,6 +28,7 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             for (int i = 0; i < letterCount; i++)
             {
                 var letterView = AddLetter(lettersStr[i]);
+                letterView.OnSelectionChanged += OnInputChanged;
                 
                 float angle = i * angleStep * Mathf.Deg2Rad;
                 Vector2 position = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * offsetFromCenter;
@@ -31,9 +37,9 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             }
         }
 
-        private LetterView AddLetter(char letter)
+        private LetterViewBase AddLetter(char letter)
         {
-            var letterView = Instantiate(letterViewPrefab, lettersRoot);
+            var letterView = Instantiate(letterViewBasePrefab, lettersRoot);
             letterView.SetLetter(letter);
             _letterViews.Add(letterView);
             
@@ -45,6 +51,8 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
         {
             foreach (var letterView in _letterViews)
             {
+                letterView.OnSelectionChanged -= OnInputChanged;
+                
                 Destroy(letterView.gameObject);
             }
             

@@ -330,6 +330,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[UI]'
       objectReference: {fileID: 0}
+    - target: {fileID: 3741439536846429477, guid: e25308dd88d1d4e47b25ac4fd8961e3b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902264801966163584, guid: e25308dd88d1d4e47b25ac4fd8961e3b, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4902264801966163584, guid: e25308dd88d1d4e47b25ac4fd8961e3b, type: 3}
+    - target: {fileID: 5167778151975026032, guid: e25308dd88d1d4e47b25ac4fd8961e3b, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5167778151975026032, guid: e25308dd88d1d4e47b25ac4fd8961e3b, type: 3}
+    - target: {fileID: 5788983989830738421, guid: e25308dd88d1d4e47b25ac4fd8961e3b, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5788983989830738421, guid: e25308dd88d1d4e47b25ac4fd8961e3b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -131,5 +131,205 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1284609381857505869, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1280973166711933170}
   m_SourcePrefab: {fileID: 100100000, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+--- !u!1 &1562962694002312757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1284609381857505869, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+  m_PrefabInstance: {fileID: 316126254068806776}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1280973166711933170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562962694002312757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2137b199915c4fa4bcdb3aa4a0b0cacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: InAnimation
+      Entry: 6
+      Data: 
+    - Name: OutAnimation
+      Entry: 6
+      Data: 
+    - Name: colorConfig
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorSchemeType,
+        Assembly-CSharp],[SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorScheme,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorSchemeType,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorScheme, Assembly-CSharp
+    - Name: LetterColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.3019608
+    - Name: 
+      Entry: 4
+      Data: 0.3019608
+    - Name: 
+      Entry: 4
+      Data: 0.3019608
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BgColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorScheme, Assembly-CSharp
+    - Name: LetterColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BgColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.396078438
+    - Name: 
+      Entry: 4
+      Data: 0.7411765
+    - Name: 
+      Entry: 4
+      Data: 0.396078438
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvasGroup: {fileID: 7014171056298332017}
+  rectTransform: {fileID: 3000382959011293656}
+  letterText: {fileID: 5612511878446906337}
+  letterBg: {fileID: 3669513491656701300}
+--- !u!224 &3000382959011293656 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+  m_PrefabInstance: {fileID: 316126254068806776}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3669513491656701300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3931537141112324364, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+  m_PrefabInstance: {fileID: 316126254068806776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5612511878446906337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5296443125987725209, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+  m_PrefabInstance: {fileID: 316126254068806776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &7014171056298332017 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 7292537596818701065, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+  m_PrefabInstance: {fileID: 316126254068806776}
+  m_PrefabAsset: {fileID: 0}

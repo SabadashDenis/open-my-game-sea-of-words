@@ -143,7 +143,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3296805629568671136}
-  - component: {fileID: 8481835301232654201}
   - component: {fileID: 7292537596818701065}
   m_Layer: 0
   m_Name: letter_base
@@ -173,42 +172,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8481835301232654201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284609381857505869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6f787d49449457eb435f834ed1c2257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: InAnimation
-      Entry: 6
-      Data: 
-    - Name: OutAnimation
-      Entry: 6
-      Data: 
-  canvasGroup: {fileID: 7292537596818701065}
-  rectTransform: {fileID: 3296805629568671136}
-  colorConfig:
-    LetterNormalColor: {r: 1, g: 1, b: 1, a: 1}
-    LetterSelectedColor: {r: 1, g: 1, b: 1, a: 1}
-    BgNormalColor: {r: 1, g: 1, b: 1, a: 1}
-    BgSelectedColor: {r: 1, g: 1, b: 1, a: 1}
-  letterText: {fileID: 5296443125987725209}
-  letterBg: {fileID: 3931537141112324364}
 --- !u!225 &7292537596818701065
 CanvasGroup:
   m_ObjectHideFlags: 0
