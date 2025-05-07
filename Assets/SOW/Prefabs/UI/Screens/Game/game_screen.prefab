@@ -604,7 +604,7 @@ MonoBehaviour:
       Data: 
   canvasGroup: {fileID: 1642132171793560722}
   rectTransform: {fileID: 8797234784603825267}
-  letterViewBasePrefab: {fileID: 1155598010748464916, guid: c0b8076a9d79970438cc774fcd62c96c, type: 3}
+  letterViewPrefab: {fileID: 1155598010748464916, guid: c0b8076a9d79970438cc774fcd62c96c, type: 3}
   lettersRoot: {fileID: 4226182314346109166}
   offsetFromCenter: 230
 --- !u!225 &1642132171793560722
@@ -903,7 +903,7 @@ MonoBehaviour:
       Data: 
   canvasGroup: {fileID: 849216762651133823}
   rectTransform: {fileID: 5503567062901124019}
-  letterPrefab: {fileID: 1280973166711933170, guid: ec7f0c3adab46a640adcbef8bad59926, type: 3}
+  letterPrefab: {fileID: 708863472066932713, guid: ec7f0c3adab46a640adcbef8bad59926, type: 3}
   letterRoot: {fileID: 5542462573842480389}
 --- !u!225 &849216762651133823
 CanvasGroup:

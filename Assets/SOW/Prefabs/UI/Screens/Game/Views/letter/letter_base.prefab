@@ -143,6 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3296805629568671136}
+  - component: {fileID: 987828413190282129}
   - component: {fileID: 7292537596818701065}
   m_Layer: 0
   m_Name: letter_base
@@ -172,6 +173,166 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &987828413190282129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284609381857505869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f787d49449457eb435f834ed1c2257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: InAnimation
+      Entry: 6
+      Data: 
+    - Name: OutAnimation
+      Entry: 6
+      Data: 
+    - Name: colorConfig
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorSchemeType,
+        Assembly-CSharp],[SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorScheme,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorSchemeType,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorScheme, Assembly-CSharp
+    - Name: LetterColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.3019608
+    - Name: 
+      Entry: 4
+      Data: 0.3019608
+    - Name: 
+      Entry: 4
+      Data: 0.3019608
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BgColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorScheme, Assembly-CSharp
+    - Name: LetterColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BgColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.396078438
+    - Name: 
+      Entry: 4
+      Data: 0.7411765
+    - Name: 
+      Entry: 4
+      Data: 0.396078438
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvasGroup: {fileID: 7292537596818701065}
+  rectTransform: {fileID: 3296805629568671136}
+  letterText: {fileID: 5296443125987725209}
+  letterBg: {fileID: 3931537141112324364}
 --- !u!225 &7292537596818701065
 CanvasGroup:
   m_ObjectHideFlags: 0

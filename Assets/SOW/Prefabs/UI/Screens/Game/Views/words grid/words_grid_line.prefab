@@ -108,7 +108,7 @@ MonoBehaviour:
       Data: 
   canvasGroup: {fileID: 6788791280640068607}
   rectTransform: {fileID: 8025902134018338252}
-  letterPrefab: {fileID: 1280973166711933170, guid: ec7f0c3adab46a640adcbef8bad59926, type: 3}
+  letterPrefab: {fileID: 708863472066932713, guid: ec7f0c3adab46a640adcbef8bad59926, type: 3}
   letterRoot: {fileID: 8025902134018338252}
 --- !u!225 &6788791280640068607
 CanvasGroup:

@@ -91,3 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f086468a49a4dff8b9e1f8ef1465606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lettersMonoPool:
+    poolContainer: {fileID: 0}
+    prefabs: []

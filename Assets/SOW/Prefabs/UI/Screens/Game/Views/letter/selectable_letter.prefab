@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
     - target: {fileID: 1284609381857505869, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
       propertyPath: m_Name
-      value: letter_selectable
+      value: selectable_letter
       objectReference: {fileID: 0}
     - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
       propertyPath: m_Pivot.x
@@ -92,7 +96,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

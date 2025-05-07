@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class WordsGridLine : View
 {
-    [SerializeField] private LetterViewBase letterPrefab;
+    [SerializeField] private LetterView letterPrefab;
     [SerializeField] private Transform letterRoot;
 
-    private List<LetterViewBase> _letters = new();
+    private List<LetterView> _letters = new();
     
     public void SetupWord(string word)
     {

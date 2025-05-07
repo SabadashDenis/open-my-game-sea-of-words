@@ -9,11 +9,11 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
 {
     public class LetterInputCircle : View
     {
-        [FormerlySerializedAs("letterViewPrefab")] [SerializeField] private LetterViewBase letterViewBasePrefab;
+        [FormerlySerializedAs("letterViewBasePrefab")] [SerializeField] private LetterView.LetterView letterViewPrefab;
         [SerializeField] private Transform lettersRoot;
         [SerializeField] private float offsetFromCenter;
         
-        private List<LetterViewBase> _letterViews = new();
+        private List<LetterView.LetterView> _letterViews = new();
         
         public event Action<char, bool> OnInputChanged = delegate { };
         
@@ -37,9 +37,9 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             }
         }
 
-        private LetterViewBase AddLetter(char letter)
+        private LetterView.LetterView AddLetter(char letter)
         {
-            var letterView = Instantiate(letterViewBasePrefab, lettersRoot);
+            var letterView = Instantiate(letterViewPrefab, lettersRoot);
             letterView.SetLetter(letter);
             _letterViews.Add(letterView);
             

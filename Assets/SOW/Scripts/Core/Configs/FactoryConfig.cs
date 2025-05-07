@@ -7,6 +7,6 @@ namespace SoW.Scripts.Core.Factory._
     [Serializable]
     public class FactoryConfig
     {
-        [SerializeField] private LetterViewBase letter;
+        [SerializeField] private LetterView letter;
     }
 }

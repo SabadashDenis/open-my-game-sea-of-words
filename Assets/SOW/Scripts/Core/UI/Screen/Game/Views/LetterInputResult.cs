@@ -6,10 +6,10 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
 {
     public class LetterInputResult : View
     {
-        [SerializeField] private LetterViewBase letterPrefab;
+        [SerializeField] private LetterView.LetterView letterPrefab;
         [SerializeField] private Transform letterRoot;
         
-        private Stack<LetterViewBase> _letterViews = new();
+        private Stack<LetterView.LetterView> _letterViews = new();
 
         public void Append(char letter)
         {

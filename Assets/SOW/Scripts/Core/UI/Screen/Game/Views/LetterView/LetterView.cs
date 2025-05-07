@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace SoW.Scripts.Core.UI.Screen.Game.Views.LetterView
 {
-    public abstract class LetterViewBase : View, ILetterView
+    public class LetterView : View, ILetterView
     {
         [SerializeField] private Dictionary<LetterColorSchemeType, LetterColorScheme> colorConfig = new();
         [SerializeField] private TMP_Text letterText;

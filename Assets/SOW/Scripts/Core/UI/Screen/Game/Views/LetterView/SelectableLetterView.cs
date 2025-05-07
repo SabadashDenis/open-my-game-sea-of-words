@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace SoW.Scripts.Core.UI.Screen.Game.Views.LetterView
 {
-    public class SelectableLetterView : LetterViewBase, IPointerEnterHandler, IPointerDownHandler
+    public class SelectableLetterView : LetterView, IPointerEnterHandler, IPointerDownHandler
     {
         public void OnPointerEnter(PointerEventData eventData)
         {

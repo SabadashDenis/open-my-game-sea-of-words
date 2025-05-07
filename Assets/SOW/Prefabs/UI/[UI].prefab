@@ -55,6 +55,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 676361710902438249}
     m_Modifications:
+    - target: {fileID: 3409244105767289301, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3409244105767289301, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
     - target: {fileID: 3605405763756394446, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -95,10 +99,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4085092441645686096, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4085092441645686096, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
+    - target: {fileID: 4255581598789559968, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4255581598789559968, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
     - target: {fileID: 4303238503652915818, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
       propertyPath: m_Name
       value: GameScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 5542462573842480389, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946220947288152743, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7946220947288152743, guid: 48b2c4378db9ff24bb1feeea0f1cc149, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
