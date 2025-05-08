@@ -14,7 +14,7 @@ namespace SoW.Scripts.Core.Scenario._
         {
             foreach (var scenario in scenarios)
             {
-                scenario.Init(new(data.UI));
+                scenario.Init(new(data.UI, data.Pool));
             }
         }
         
@@ -31,8 +31,6 @@ namespace SoW.Scripts.Core.Scenario._
             this.Log(LogType.Error, $"Can't get scenario of type {typeof(TScenario).Name}");
             return null;
         }
-
-        public TScreen GetScreen<TScreen>() where TScreen : ScreenViewBase => Data.UI.GetScreen<TScreen>();
         
         [Button]
         private void Collect() => scenarios = GetComponentsInChildren<ScenarioBase>().ToList();

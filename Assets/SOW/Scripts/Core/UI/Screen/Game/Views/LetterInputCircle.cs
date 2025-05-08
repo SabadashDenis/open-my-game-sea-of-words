@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using SoW.Scripts.Core.UI.Screen.Game.Views.LetterView;
+using SoW.Scripts.Core.Factory._;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SoW.Scripts.Core.UI.Screen.Game.Views
 {
     public class LetterInputCircle : View
     {
-        [FormerlySerializedAs("letterViewBasePrefab")] [SerializeField] private LetterView.LetterView letterViewPrefab;
         [SerializeField] private Transform lettersRoot;
         [SerializeField] private float offsetFromCenter;
         
-        private List<LetterView.LetterView> _letterViews = new();
+        private List<LetterView> _letterViews = new();
         
         public event Action<char, bool> OnInputChanged = delegate { };
         
@@ -27,7 +25,8 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
 
             for (int i = 0; i < letterCount; i++)
             {
-                var letterView = AddLetter(lettersStr[i]);
+                var letterView = SoWPool.I.LettersPool.Pop<SelectableLetterView>(lettersRoot);
+                letterView.SetLetter(lettersStr[i]);
                 letterView.OnSelectionChanged += OnInputChanged;
                 
                 float angle = i * angleStep * Mathf.Deg2Rad;
@@ -37,23 +36,13 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             }
         }
 
-        private LetterView.LetterView AddLetter(char letter)
-        {
-            var letterView = Instantiate(letterViewPrefab, lettersRoot);
-            letterView.SetLetter(letter);
-            _letterViews.Add(letterView);
-            
-            return letterView;
-        }
-
         [FoldoutGroup("API"), Button]
         private void ClearLetters()
         {
             foreach (var letterView in _letterViews)
             {
                 letterView.OnSelectionChanged -= OnInputChanged;
-                
-                Destroy(letterView.gameObject);
+                SoWPool.I.LettersPool.Push(letterView);
             }
             
             _letterViews.Clear();

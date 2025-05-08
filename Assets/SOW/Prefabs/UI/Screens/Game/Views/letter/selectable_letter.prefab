@@ -139,12 +139,12 @@ MonoBehaviour:
       Data: 
     - Name: colorConfig
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorSchemeType,
-        Assembly-CSharp],[SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorScheme,
+      Data: 0|System.Collections.Generic.Dictionary`2[[SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorSchemeType,
+        Assembly-CSharp],[SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorScheme,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorSchemeType,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorSchemeType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -166,7 +166,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorScheme, Assembly-CSharp
+      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorScheme, Assembly-CSharp
     - Name: LetterColor
       Entry: 7
       Data: UnityEngine.Color, UnityEngine.CoreModule
@@ -217,7 +217,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterView.LetterColorScheme, Assembly-CSharp
+      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorScheme, Assembly-CSharp
     - Name: LetterColor
       Entry: 7
       Data: UnityEngine.Color, UnityEngine.CoreModule

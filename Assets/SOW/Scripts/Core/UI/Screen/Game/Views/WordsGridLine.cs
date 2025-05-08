@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using SoW.Scripts.Core.Factory._;
 using SoW.Scripts.Core.UI;
-using SoW.Scripts.Core.UI.Screen.Game.Views.LetterView;
+using SoW.Scripts.Core.UI.Screen.Game.Views;
 using UnityEngine;
 
 public class WordsGridLine : View
 {
-    [SerializeField] private LetterView letterPrefab;
     [SerializeField] private Transform letterRoot;
 
     private List<LetterView> _letters = new();
@@ -24,7 +24,7 @@ public class WordsGridLine : View
     {
         foreach (var letterView in _letters)
         {
-            Destroy(letterView.gameObject);
+            SoWPool.I.LettersPool.Push(letterView);
         }
         
         _letters.Clear();
@@ -32,9 +32,9 @@ public class WordsGridLine : View
 
     private void AddLetter(char letter)
     {
-        var newLetter = Instantiate(letterPrefab, letterRoot);
-        newLetter.SetLetter(letter);
+        var letterView = SoWPool.I.LettersPool.Pop<LetterView>(letterRoot);
+        letterView.SetLetter(letter);
         
-        _letters.Add(newLetter);
+        _letters.Add(letterView);
     }
 }

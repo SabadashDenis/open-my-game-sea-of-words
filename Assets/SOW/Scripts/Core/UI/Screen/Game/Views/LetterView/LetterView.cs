@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SoW.Scripts.Core.UI.Screen.Game.Views.LetterView
+namespace SoW.Scripts.Core.UI.Screen.Game.Views
 {
     public class LetterView : View, ILetterView
     {

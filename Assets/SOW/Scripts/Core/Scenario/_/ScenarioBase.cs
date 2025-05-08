@@ -1,4 +1,5 @@
 ﻿using System;
+using SoW.Scripts.Core.Factory._;
 using SoW.Scripts.Core.Utility.Object.Initable;
 
 namespace SoW.Scripts.Core.Scenario._
@@ -61,10 +62,12 @@ namespace SoW.Scripts.Core.Scenario._
     public struct ScenarioData
     {
         public readonly UISystem UI;
+        public readonly PoolSystem Pool;
         
-        public ScenarioData(UISystem ui)
+        public ScenarioData(UISystem ui, PoolSystem pool)
         {
             UI = ui;
+            Pool = pool;
         }
     }
 }

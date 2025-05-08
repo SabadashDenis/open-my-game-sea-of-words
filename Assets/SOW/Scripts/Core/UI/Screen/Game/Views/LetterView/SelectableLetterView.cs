@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace SoW.Scripts.Core.UI.Screen.Game.Views.LetterView
+namespace SoW.Scripts.Core.UI.Screen.Game.Views
 {
     public class SelectableLetterView : LetterView, IPointerEnterHandler, IPointerDownHandler
     {
