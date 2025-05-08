@@ -13,13 +13,13 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
         [SerializeField] private Dictionary<LetterColorSchemeType, LetterColorScheme> colorConfig = new();
         [SerializeField] private TMP_Text letterText;
         [SerializeField] private Image letterBg;
-        
+
         public event Action<char, bool> OnSelectionChanged = delegate { };
-        
+
         private char _currentLetter;
 
         public bool IsSelected { get; private set; }
-        
+
         public void SetLetter(char letter)
         {
             _currentLetter = letter;
@@ -41,13 +41,15 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             letterBg.color = targetScheme.BgColor;
         }
 
-        protected void SetSelected(bool condition)
+        public void SetSelected(bool condition, bool invokeEvent = true)
         {
             var colorScheme = condition ? LetterColorSchemeType.Selected : LetterColorSchemeType.Normal;
             SetColorScheme(colorScheme);
 
             IsSelected = condition;
-            OnSelectionChanged.Invoke(_currentLetter, condition);
+
+            if (invokeEvent)
+                OnSelectionChanged.Invoke(_currentLetter, condition);
         }
 
         public void ClearSelection() => SetSelected(false);

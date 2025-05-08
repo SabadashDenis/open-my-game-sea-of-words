@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -10,9 +11,7 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
         [SerializeField] private WordsGridLine linePrefab;
         [SerializeField] private Transform linesRoot;
 
-        private List<WordsGridLine> _lines = new();
-
-        public string LettersChain { get; private set; }
+        private Dictionary<string, WordsGridLine> _lines = new();
 
         [FoldoutGroup("API"), Button]
         public void SetupWords(string[] words)
@@ -23,64 +22,24 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             {
                 AddWord(word);
             }
-            
-            SetupLettersChain(words);
         }
 
-        private void SetupLettersChain(string[] words)
+        public void ShowWord(string word)
         {
-            Dictionary<char, int> result = new();
-            
-            foreach (string word in words)
-            {
-                Dictionary<char, int> wordLetters = new();
-                
-                foreach (char letter in word)
-                {
-                    if (!wordLetters.TryAdd(letter, 1))
-                    {
-                        wordLetters[letter]++;
-                    }
-                }
-
-                foreach (var wordLetter in wordLetters)
-                {
-                    if (result.TryGetValue(wordLetter.Key, out var resultLettersCount))
-                    {
-                        if(resultLettersCount < wordLetter.Value)
-                            result[wordLetter.Key] = resultLettersCount;
-                    }
-                    else
-                    {
-                        result.Add(wordLetter.Key, wordLetter.Value);
-                    }
-                }
-            }
-
-            string lettersChain = string.Empty;
-
-            foreach (var letterData in result)
-            {
-                for (int i = 0; i < letterData.Value; i++)
-                {
-                    lettersChain += letterData.Key;
-                }
-            }
-            
-            LettersChain = lettersChain;
+            _lines[word].ShowWord().Forget();
         }
-
+        
         private void AddWord(string word)
         {
             var newWordLine = Instantiate(linePrefab, linesRoot);
             newWordLine.SetupWord(word);
             
-            _lines.Add(newWordLine);
+            _lines.Add(word, newWordLine);
         }
 
-        public void Clear()
+        private void Clear()
         {
-            foreach (var line in _lines)
+            foreach (var line in _lines.Values)
             {
                 line.Clear();
                 Destroy(line.gameObject);

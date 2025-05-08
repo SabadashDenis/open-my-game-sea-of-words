@@ -6,14 +6,15 @@ using UnityEngine;
 
 namespace SoW.Scripts.Core.UI.Screen.Game.Views
 {
-    public class LetterInputCircle : View
+    public class LetterInputCircle : View 
     {
         [SerializeField] private Transform lettersRoot;
         [SerializeField] private float offsetFromCenter;
         
         private List<LetterView> _letterViews = new();
         
-        public event Action<char, bool> OnInputChanged = delegate { };
+        public event Action<char, bool> OnLetterSelectionChanged = delegate { };
+        public event Action OnInputFinished = delegate { };
         
         [FoldoutGroup("API"), Button]
         public void SetupLetters(string lettersStr)
@@ -27,7 +28,8 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             {
                 var letterView = SoWPool.I.LettersPool.Pop<SelectableLetterView>(lettersRoot);
                 letterView.SetLetter(lettersStr[i]);
-                letterView.OnSelectionChanged += OnInputChanged;
+                letterView.OnSelectionChanged += OnLetterSelectionChanged;
+                _letterViews.Add(letterView);
                 
                 float angle = i * angleStep * Mathf.Deg2Rad;
                 Vector2 position = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * offsetFromCenter;
@@ -36,12 +38,25 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             }
         }
 
+        private void Update()
+        {
+            if (Input.GetMouseButtonUp(0)) //TODO: Refactor
+            {
+                foreach (var letterView in _letterViews)
+                {
+                    letterView.SetSelected(false, false);
+                }
+                
+                OnInputFinished.Invoke();
+            }
+        }
+
         [FoldoutGroup("API"), Button]
         private void ClearLetters()
         {
             foreach (var letterView in _letterViews)
             {
-                letterView.OnSelectionChanged -= OnInputChanged;
+                letterView.OnSelectionChanged -= OnLetterSelectionChanged;
                 SoWPool.I.LettersPool.Push(letterView);
             }
             

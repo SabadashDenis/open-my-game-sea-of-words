@@ -18,6 +18,16 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             _letterViews.Push(letterView);
         }
 
+        public void Clear()
+        {
+            var lettersCount = _letterViews.Count;
+            
+            for (int i = 0; i < lettersCount; i++)
+            {
+                RemoveLast();
+            }
+        }
+        
         public void RemoveLast()
         {
             var lastLetter = _letterViews.Pop();
