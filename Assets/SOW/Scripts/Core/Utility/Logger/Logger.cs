@@ -7,7 +7,7 @@ namespace SoW.Scripts.Core
     {
         public static void Log(this Object obj, LogType type, string message)
         {
-            var logText = $"[{obj.GetType().Name}] {type.ToString()}: {message}]";
+            var logText = $"[{obj.GetType().Name}] {type.ToString()}: {message}";
 
             switch (type)
             {
