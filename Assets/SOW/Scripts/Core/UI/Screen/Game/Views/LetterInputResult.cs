@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using SoW.Scripts.Core.Factory._;
 using UnityEngine;
 
 namespace SoW.Scripts.Core.UI.Screen.Game.Views

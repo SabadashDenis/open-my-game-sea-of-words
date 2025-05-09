@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using SoW.Scripts.Core.Factory._;
+using SoW.Scripts.Core;
 using SoW.Scripts.Core.UI;
 using SoW.Scripts.Core.UI.Screen.Game.Views;
 using UnityEngine;

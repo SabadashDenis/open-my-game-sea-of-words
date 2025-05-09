@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using SoW.Scripts.Core.Factory._;
 using UnityEngine;
 
 namespace SoW.Scripts.Core.UI.Screen.Game.Views
@@ -11,10 +10,9 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
         [SerializeField] private Transform lettersRoot;
         [SerializeField] private float offsetFromCenter;
         
-        private List<LetterView> _letterViews = new();
+        private List<SelectableLetterView> _letterViews = new();
         
-        public event Action<char, bool> OnLetterSelectionChanged = delegate { };
-        public event Action OnInputFinished = delegate { };
+        public IReadOnlyList<SelectableLetterView> LetterViews => _letterViews;
         
         [FoldoutGroup("API"), Button]
         public void SetupLetters(string lettersStr)
@@ -28,7 +26,6 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             {
                 var letterView = SoWPool.I.LettersPool.Pop<SelectableLetterView>(lettersRoot);
                 letterView.SetLetter(lettersStr[i]);
-                letterView.OnSelectionChanged += OnLetterSelectionChanged;
                 _letterViews.Add(letterView);
                 
                 float angle = i * angleStep * Mathf.Deg2Rad;
@@ -38,16 +35,11 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             }
         }
 
-        private void Update()
+        public void ClearSelection()
         {
-            if (Input.GetMouseButtonUp(0)) //TODO: Refactor
+            foreach (var letterView in _letterViews)
             {
-                foreach (var letterView in _letterViews)
-                {
-                    letterView.SetSelected(false, false);
-                }
-                
-                OnInputFinished.Invoke();
+                letterView.SetSelected(false, false);
             }
         }
 
@@ -56,7 +48,6 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
         {
             foreach (var letterView in _letterViews)
             {
-                letterView.OnSelectionChanged -= OnLetterSelectionChanged;
                 SoWPool.I.LettersPool.Push(letterView);
             }
             

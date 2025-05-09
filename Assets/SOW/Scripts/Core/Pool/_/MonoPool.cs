@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SoW.Scripts.Core.Factory._;
 using UnityEngine;
 
 
-namespace SoW.Scripts.Core.Factory._
+namespace SoW.Scripts.Core
 {
     [Serializable]
     public class MonoPool<TObject> : MonoBehaviour, IPool<TObject>

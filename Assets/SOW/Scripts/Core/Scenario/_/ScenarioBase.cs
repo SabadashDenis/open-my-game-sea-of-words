@@ -1,5 +1,4 @@
-﻿using System;
-using SoW.Scripts.Core.Factory._;
+﻿using SoW.Scripts.Core.Input._;
 using SoW.Scripts.Core.Utility.Object.Initable;
 
 namespace SoW.Scripts.Core.Scenario._
@@ -63,11 +62,13 @@ namespace SoW.Scripts.Core.Scenario._
     {
         public readonly UISystem UI;
         public readonly PoolSystem Pool;
+        public readonly InputSystem Input;
         
-        public ScenarioData(UISystem ui, PoolSystem pool)
+        public ScenarioData(UISystem ui, PoolSystem pool, InputSystem input)
         {
             UI = ui;
             Pool = pool;
+            Input = input;
         }
     }
 }

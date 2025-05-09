@@ -2,7 +2,7 @@
 using SoW.Scripts.Core.Pool;
 using UnityEngine;
 
-namespace SoW.Scripts.Core.Factory._
+namespace SoW.Scripts.Core
 {
     public class PoolSystem : SystemBase
     {

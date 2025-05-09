@@ -13,13 +13,14 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
         [SerializeField] private Dictionary<LetterColorSchemeType, LetterColorScheme> colorConfig = new();
         [SerializeField] private TMP_Text letterText;
         [SerializeField] private Image letterBg;
-
+        
         public event Action<char, bool> OnSelectionChanged = delegate { };
-
+        
         private char _currentLetter;
 
         public bool IsSelected { get; private set; }
-
+        public char CurrentLetter => _currentLetter;
+        
         public void SetLetter(char letter)
         {
             _currentLetter = letter;

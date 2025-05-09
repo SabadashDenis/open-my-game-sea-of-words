@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using SoW.Scripts.Core.UI;
 using UnityEngine;
 
 namespace SoW.Scripts.Core.Scenario._
@@ -14,7 +13,7 @@ namespace SoW.Scripts.Core.Scenario._
         {
             foreach (var scenario in scenarios)
             {
-                scenario.Init(new(data.UI, data.Pool));
+                scenario.Init(new(data.UI, data.Pool, data.Input));
             }
         }
         

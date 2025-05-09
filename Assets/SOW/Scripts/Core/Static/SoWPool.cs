@@ -1,4 +1,4 @@
-﻿namespace SoW.Scripts.Core.Factory._
+﻿namespace SoW.Scripts.Core
 {
     public static class SoWPool 
     {

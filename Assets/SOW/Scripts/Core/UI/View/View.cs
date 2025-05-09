@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using SoW.Scripts.Core.UI.Animator;
-using SoW.Scripts.Core.Utility.Object.Initable;
 using UnityEngine;
 
 namespace SoW.Scripts.Core.UI

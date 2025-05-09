@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SoW.Scripts.Core.Scenario._;
+using SoW.Scripts.Core.UI.Screen.Game.Views;
 
 namespace SoW.Scripts.Core.Scenario
 {
@@ -8,7 +9,8 @@ namespace SoW.Scripts.Core.Scenario
     {
         private GameScreen _gameScreen;
         
-        private List<char> _currentInput = new();
+        private List<SelectableLetterView> _selectedLetters = new();
+        
         public string _lettersChain;
 
         private string[] _levelWords = { "канон", "икона", "цинк", "кино", "ион", "инок" };
@@ -24,11 +26,16 @@ namespace SoW.Scripts.Core.Scenario
             
             _gameScreen.Show();
 
-            _gameScreen.InputCircle.OnLetterSelectionChanged += ProcessLetterInput;
-            _gameScreen.InputCircle.OnInputFinished += ProcessInputFinish;
-            
             _gameScreen.WordsGrid.SetupWords(_levelWords);
             _gameScreen.InputCircle.SetupLetters(_lettersChain);
+            
+            Data.Input.Tap.Released += ProcessInputFinish;
+            
+            foreach (var inputLetterView in _gameScreen.InputCircle.LetterViews)
+            {
+                inputLetterView.Hover += OnLetterHover;
+                inputLetterView.Tap += OnLetterTap;
+            }
         }
 
         private void SetupLettersChain(string[] words)
@@ -73,31 +80,61 @@ namespace SoW.Scripts.Core.Scenario
             
             _lettersChain = lettersChain;
         }
-        
-        private void ProcessLetterInput(char letter, bool needToAdd)
+
+        private void OnLetterHover(SelectableLetterView letterView)
         {
-            if (needToAdd)
+            if (Data.Input.Tap.Started && _selectedLetters.Count > 0)
             {
-                _currentInput.Add(letter);
-                _gameScreen.InputResult.Append(letter);
-            }
-            else
-            {
-                _currentInput.Remove(letter);
-                _gameScreen.InputResult.RemoveLast();
+                if (letterView.IsSelected)
+                {
+                    var deselectedLetterIndex = _selectedLetters.IndexOf(letterView);
+                    var lettersToRemove = _selectedLetters.Count - deselectedLetterIndex - 1; //-1 to save hovered letter selection
+                    
+                    for (int i = 0; i < lettersToRemove; i++)
+                    {
+                        var lastLetterIndex = _selectedLetters.Count - 1;
+                        
+                        _selectedLetters[lastLetterIndex].SetSelected(false);
+                        _selectedLetters.RemoveAt(lastLetterIndex);
+                        
+                        _gameScreen.InputResult.RemoveLast();
+                    }
+                }
+                else
+                {
+                    letterView.SetSelected(true);
+                    _gameScreen.InputResult.Append(letterView.CurrentLetter);
+                    _selectedLetters.Add(letterView);
+                }
             }
         }
-
+        
+        private void OnLetterTap(SelectableLetterView letterView)
+        {
+            if (_selectedLetters.Count == 0)
+            {
+                letterView.SetSelected(true);
+                _gameScreen.InputResult.Append(letterView.CurrentLetter);
+                _selectedLetters.Add(letterView);
+            }
+        }
+        
         private void ProcessInputFinish()
-        { 
-            var inputStr = new string(_currentInput.ToArray());
+        {
+            string inputStr = string.Empty;
+
+            foreach (var selectedLetter in _selectedLetters)
+            {
+                inputStr += selectedLetter.CurrentLetter;
+            }
             
             if (_levelWords.Any(word => word == inputStr))
             {
                 _gameScreen.WordsGrid.ShowWord(inputStr);
             }
             
-            _currentInput.Clear();
+            _selectedLetters.Clear();
+            _gameScreen.InputCircle.ClearSelection();
             _gameScreen.InputResult.Clear();
         }
         
@@ -107,8 +144,13 @@ namespace SoW.Scripts.Core.Scenario
 
         protected override void StopInternal()
         {
-            _gameScreen.InputCircle.OnLetterSelectionChanged -= ProcessLetterInput;
-            _gameScreen.InputCircle.OnInputFinished -= ProcessInputFinish;
+            foreach (var inputLetterView in _gameScreen.InputCircle.LetterViews)
+            {
+                inputLetterView.Hover -= OnLetterHover;
+                inputLetterView.Tap -= OnLetterTap;
+            }
+            
+            Data.Input.Tap.Released -= ProcessInputFinish;
         }
     }
 }
