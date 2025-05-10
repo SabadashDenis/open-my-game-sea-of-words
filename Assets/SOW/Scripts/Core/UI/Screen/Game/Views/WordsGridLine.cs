@@ -9,6 +9,7 @@ using UnityEngine;
 public class WordsGridLine : View
 {
     [SerializeField] private Transform letterRoot;
+    [SerializeField] private int letterSize;
     [SerializeField] private float showLetterDelay;
 
     private List<LetterView> _letters = new();
@@ -46,6 +47,7 @@ public class WordsGridLine : View
     {
         var letterView = SoWPool.I.LettersPool.Pop<LetterView>(letterRoot);
         letterView.SetLetter(letter);
+        letterView.SetSize(letterSize);
         letterView.SetColorScheme(LetterColorSchemeType.Normal);
         
         _letters.Add(letterView);

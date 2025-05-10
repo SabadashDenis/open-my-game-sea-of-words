@@ -1,4 +1,5 @@
-﻿using SoW.Scripts.Core.Input._;
+﻿using SoW.Scripts.Core.Configs._;
+using SoW.Scripts.Core.Input._;
 using SoW.Scripts.Core.Utility.Object.Initable;
 
 namespace SoW.Scripts.Core.Scenario._
@@ -61,14 +62,16 @@ namespace SoW.Scripts.Core.Scenario._
     public struct ScenarioData
     {
         public readonly UISystem UI;
-        public readonly PoolSystem Pool;
+        public readonly ScenarioSystem Scenario;
         public readonly InputSystem Input;
+        public readonly ConfigSystem Config;
         
-        public ScenarioData(UISystem ui, PoolSystem pool, InputSystem input)
+        public ScenarioData(UISystem ui, ScenarioSystem scenario, InputSystem input, ConfigSystem config)
         {
             UI = ui;
-            Pool = pool;
+            Scenario = scenario;
             Input = input;
+            Config = config;
         }
     }
 }

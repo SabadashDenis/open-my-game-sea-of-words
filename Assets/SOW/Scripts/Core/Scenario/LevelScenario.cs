@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using SoW.Scripts.Core.Configs;
 using SoW.Scripts.Core.Scenario._;
 using SoW.Scripts.Core.UI.Screen.Game.Views;
 
 namespace SoW.Scripts.Core.Scenario
 {
-    public class LevelScenario : ScenarioBase
+    public class LevelScenario : AsyncScenarioBase<int>
     {
         private GameScreen _gameScreen;
+        private LevelData _levelData;
         
         private List<SelectableLetterView> _selectedLetters = new();
-        
-        public string _lettersChain;
-
-        private string[] _levelWords = { "канон", "икона", "цинк", "кино", "ион", "инок" };
+        private List<string> _foundedWords = new();
         
         protected override void InitInternal(ScenarioData data)
         {
@@ -22,12 +23,15 @@ namespace SoW.Scripts.Core.Scenario
 
         protected override void PlayInternal()
         {
-            SetupLettersChain(_levelWords);
+            var levelsData = Data.Config.Levels.Data.data;
+            _levelData = levelsData[Preset % levelsData.Count];
+            
+            GetLettersChain(_levelData.words);
             
             _gameScreen.Show();
 
-            _gameScreen.WordsGrid.SetupWords(_levelWords);
-            _gameScreen.InputCircle.SetupLetters(_lettersChain);
+            _gameScreen.WordsGrid.SetupWords(_levelData.words);
+            _gameScreen.InputCircle.SetupLetters(GetLettersChain(_levelData.words));
             
             Data.Input.Tap.Released += ProcessInputFinish;
             
@@ -38,7 +42,12 @@ namespace SoW.Scripts.Core.Scenario
             }
         }
 
-        private void SetupLettersChain(string[] words)
+        protected override async UniTask AsyncPlayInternal(CancellationToken token)
+        {
+            await UniTask.WaitUntil(() => _foundedWords.Count == _levelData.words.Length, cancellationToken: token);
+        }
+
+        private string GetLettersChain(string[] words)
         {
             Dictionary<char, int> result = new();
             
@@ -59,7 +68,7 @@ namespace SoW.Scripts.Core.Scenario
                     if (result.TryGetValue(wordLetter.Key, out var resultLettersCount))
                     {
                         if(resultLettersCount < wordLetter.Value)
-                            result[wordLetter.Key] = resultLettersCount;
+                            result[wordLetter.Key] = wordLetter.Value;
                     }
                     else
                     {
@@ -78,7 +87,7 @@ namespace SoW.Scripts.Core.Scenario
                 }
             }
             
-            _lettersChain = lettersChain;
+            return lettersChain;
         }
 
         private void OnLetterHover(SelectableLetterView letterView)
@@ -128,9 +137,10 @@ namespace SoW.Scripts.Core.Scenario
                 inputStr += selectedLetter.CurrentLetter;
             }
             
-            if (_levelWords.Any(word => word == inputStr))
+            if (_levelData.words.Any(word => word == inputStr))
             {
                 _gameScreen.WordsGrid.ShowWord(inputStr);
+                _foundedWords.Add(inputStr);
             }
             
             _selectedLetters.Clear();
@@ -138,10 +148,6 @@ namespace SoW.Scripts.Core.Scenario
             _gameScreen.InputResult.Clear();
         }
         
-        protected override void OnTick()
-        {
-        }
-
         protected override void StopInternal()
         {
             foreach (var inputLetterView in _gameScreen.InputCircle.LetterViews)

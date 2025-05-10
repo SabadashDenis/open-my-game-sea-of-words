@@ -7,17 +7,17 @@ namespace SoW.Scripts.Core.Scenario._
 {
     public class ScenarioSystem : SystemBase
     {
-        [SerializeField] private List<ScenarioBase> scenarios = new();
+        [SerializeField] private List<AsyncScenarioBase> scenarios = new();
         
         protected override void InitInternal(SystemData data)
         {
             foreach (var scenario in scenarios)
             {
-                scenario.Init(new(data.UI, data.Pool, data.Input));
+                scenario.Init(new(data.UI, this, data.Input, data.Config));
             }
         }
         
-        public TScenario GetScenario<TScenario>() where TScenario : ScenarioBase
+        public TScenario GetScenario<TScenario>() where TScenario : AsyncScenarioBase
         {
             if (scenarios.Count > 0)
             {
@@ -32,6 +32,6 @@ namespace SoW.Scripts.Core.Scenario._
         }
         
         [Button]
-        private void Collect() => scenarios = GetComponentsInChildren<ScenarioBase>().ToList();
+        private void Collect() => scenarios = GetComponentsInChildren<AsyncScenarioBase>().ToList();
     }
 }
