@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5685f08cee754af0b4d04d6df8177761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapHandler: {fileID: 1148230362486047788}
+  click: {fileID: 8608102008460436986}
 --- !u!1 &9143418875406506143
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,9 +55,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2533241791867906174}
-  - component: {fileID: 1148230362486047788}
+  - component: {fileID: 8608102008460436986}
   m_Layer: 0
-  m_Name: tap
+  m_Name: click
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7460706407104703969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1148230362486047788
+--- !u!114 &8608102008460436986
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,6 +87,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9143418875406506143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b128ef8017e14046bff6aebd2db8dc82, type: 3}
+  m_Script: {fileID: 11500000, guid: 57ce838e4bc84abb9ac364ca7fa78299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

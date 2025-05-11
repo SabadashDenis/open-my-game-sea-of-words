@@ -4,13 +4,13 @@ namespace SoW.Scripts.Core.Input._
 {
     public class InputSystem : SystemBase
     {
-        [SerializeField] private TapInputHandler tapHandler;
+        [SerializeField] private ClickInputHandler click;
         
-        public TapInputHandler Tap => tapHandler;
+        public ClickInputHandler Click => click;
         
         protected override void InitInternal(SystemData data)
         {
-            tapHandler.Init();
+            click.Init();
         }
     }
 }

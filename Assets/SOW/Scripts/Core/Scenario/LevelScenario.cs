@@ -38,7 +38,7 @@ namespace SoW.Scripts.Core.Scenario
             _gameScreen.SetupWords(_levelData.words, bestLettersSize);
             _gameScreen.InputCircle.SetupLetters(GetLettersChain(_levelData.words));
             
-            Data.Input.Tap.Released += ProcessInputFinish;
+            Data.Input.Click.Released += ProcessInputFinish;
             
             foreach (var inputLetterView in _gameScreen.InputCircle.LetterViews)
             {
@@ -93,7 +93,7 @@ namespace SoW.Scripts.Core.Scenario
 
         private void OnLetterHover(SelectableLetterView letterView)
         {
-            if (Data.Input.Tap.Started && _selectedLetters.Count > 0)
+            if (Data.Input.Click.Started && _selectedLetters.Count > 0)
             {
                 if (letterView.IsSelected)
                 {
@@ -158,7 +158,7 @@ namespace SoW.Scripts.Core.Scenario
                 inputLetterView.Tap -= OnLetterTap;
             }
             
-            Data.Input.Tap.Released -= ProcessInputFinish;
+            Data.Input.Click.Released -= ProcessInputFinish;
             
             _gameScreen.Clear();
             
