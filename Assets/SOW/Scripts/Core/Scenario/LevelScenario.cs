@@ -33,9 +33,10 @@ namespace SoW.Scripts.Core.Scenario
             _gameScreen.Show();
             
             var bestLettersSize = await _gameScreen.GetBestLettersFitSize(_levelData.words, Preset.MaxGridsCount);
+            var lengthSortedWords = _levelData.words.OrderBy(x => x.Length).ToArray();
             
             _gameScreen.SetLevel(Preset.RealLevelNumber);
-            _gameScreen.SetupWords(_levelData.words, bestLettersSize);
+            _gameScreen.SetupWords(lengthSortedWords, bestLettersSize);
             _gameScreen.InputCircle.SetupLetters(GetLettersChain(_levelData.words));
             
             Data.Input.Click.Released += ProcessInputFinish;
