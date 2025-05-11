@@ -13,24 +13,30 @@ public class WordsGridLine : View
     [SerializeField] private float showLetterDelay;
 
     private List<LetterView> _letters = new();
-    
+
     public List<LetterView> Letters => _letters;
-    
+
     public void SetupWord(string word)
     {
         Clear();
-        
+
         foreach (var letter in word)
         {
             AddLetter(letter);
         }
     }
 
-    public async UniTask ShowWord()
+    public async UniTask ShowWord(bool immediately = false)
     {
+        var token = this.GetCancellationTokenOnDestroy();
+        
         foreach (var letterView in _letters)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(showLetterDelay), cancellationToken: this.GetCancellationTokenOnDestroy());
+            if (!immediately)
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(showLetterDelay), cancellationToken: token);
+            }
+
             letterView.SetColorScheme(LetterColorSchemeType.Selected);
         }
     }
@@ -41,7 +47,7 @@ public class WordsGridLine : View
         {
             SoWPool.I.LettersPool.Push(letterView);
         }
-        
+
         _letters.Clear();
     }
 
@@ -51,7 +57,7 @@ public class WordsGridLine : View
         letterView.SetLetter(letter);
         letterView.SetSize(letterSize);
         letterView.SetColorScheme(LetterColorSchemeType.Normal);
-        
+
         _letters.Add(letterView);
     }
 }

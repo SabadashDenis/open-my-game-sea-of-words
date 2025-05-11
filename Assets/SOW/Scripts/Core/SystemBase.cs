@@ -1,5 +1,6 @@
 ﻿using SoW.Scripts.Core.Configs._;
 using SoW.Scripts.Core.Input._;
+using SoW.Scripts.Core.Save._;
 using SoW.Scripts.Core.Scenario._;
 using SoW.Scripts.Core.Utility.Object.Initable;
 
@@ -15,7 +16,8 @@ namespace SoW.Scripts.Core
         public readonly InputSystem Input;
         public readonly ConfigSystem Config;
         
-        public SystemData(UISystem ui, ScenarioSystem scenario, PoolSystem pool, InputSystem input, ConfigSystem config)
+        public SystemData(UISystem ui, ScenarioSystem scenario, PoolSystem pool, InputSystem input,
+            ConfigSystem config)
         {
             UI = ui;
             Scenario = scenario;

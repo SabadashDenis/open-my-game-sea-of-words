@@ -134,8 +134,8 @@ public class GameScreen : ScreenViewBase
 
     private Vector2 GetWordsPanelUsefulSize() => layoutGroup.GetUsefulSize(3);
 
-    public void ShowWord(string word)
+    public void ShowWord(string word, bool immediately = false)
     {
-        _words[word].ShowWord().Forget();
+        _words[word].ShowWord(immediately).Forget();
     }
 }

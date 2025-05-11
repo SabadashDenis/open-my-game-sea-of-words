@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using SoW.Scripts.Core.Configs;
+using SoW.Scripts.Core.Save._;
 using SoW.Scripts.Core.Scenario._;
 using SoW.Scripts.Core.UI.Screen.Game.Views;
 using SoW.Scripts.Core.Utility;
+using UnityEngine;
 
 namespace SoW.Scripts.Core.Scenario
 {
@@ -15,7 +18,6 @@ namespace SoW.Scripts.Core.Scenario
         private LevelData _levelData;
         
         private List<SelectableLetterView> _selectedLetters = new();
-        private List<string> _foundedWords = new();
         
         protected override void InitInternal(ScenarioData data)
         {
@@ -31,14 +33,19 @@ namespace SoW.Scripts.Core.Scenario
             
             _gameScreen.Show();
             
-            _gameScreen.SetLevel(Preset.RealLevelNumber);
+            _gameScreen.SetLevel(Preset.LevelIndex + 1);
             
-            var bestLettersSize = await _gameScreen.GetBestLettersFitSize(_levelData.words, Preset.MaxGridsCount);
+            var bestLettersSize = await _gameScreen.GetBestLettersFitSize(_levelData.words, 3);
             var lengthSortedWords = _levelData.words.OrderBy(x => x.Length).ToArray();
             _gameScreen.SetupWords(lengthSortedWords, bestLettersSize);
             
             var letters = WordsUtility.GetCommonLetters(_levelData.words);
             _gameScreen.InputCircle.SetupLetters(letters);
+
+            foreach (var foundedWord in Preset.FoundedWords)
+            {
+                _gameScreen.ShowWord(foundedWord, true);
+            }
             
             Data.Input.Click.Released += ProcessInputFinish;
             
@@ -47,7 +54,7 @@ namespace SoW.Scripts.Core.Scenario
                 inputLetterView.Hover += OnLetterHover;
                 inputLetterView.Tap += OnLetterTap;
             }
-            await UniTask.WaitUntil(() => _foundedWords.Count == _levelData.words.Length, cancellationToken: token);
+            await UniTask.WaitUntil(() => Preset.FoundedWords.Count == _levelData.words.Length, cancellationToken: token);
         }
 
         private void OnLetterHover(SelectableLetterView letterView)
@@ -97,16 +104,20 @@ namespace SoW.Scripts.Core.Scenario
                 inputStr += selectedLetter.CurrentLetter;
             }
             
-            if (_levelData.words.Any(word => word == inputStr) && !_foundedWords.Contains(inputStr))
+            if (_levelData.words.Any(word => word == inputStr) && !Preset.FoundedWords.Contains(inputStr))
             {
                 _gameScreen.ShowWord(inputStr);
-                _foundedWords.Add(inputStr);
-                this.Log(LogType.Info, $"FoundedWords: {_foundedWords.Count}/{_levelData.words.Length}");
+                Preset.FoundedWords.Add(inputStr);
+                this.Log(LogType.Info, $"FoundedWords: {Preset.FoundedWords.Count}/{_levelData.words.Length}");
             }
             
             _selectedLetters.Clear();
             _gameScreen.InputCircle.ClearSelection();
             _gameScreen.InputResult.Clear();
+            
+            SaveSystem.Saver.Save<LevelScenarioData>();
+            this.Log(LogType.Info, $"Save! Level: [{SaveSystem.Saver.Get<LevelScenarioData>().LevelIndex}], " +
+                                   $"Words: [{SaveSystem.Saver.Get<LevelScenarioData>().FoundedWords.Count}]");
         }
         
         protected override void StopInternal()
@@ -122,22 +133,14 @@ namespace SoW.Scripts.Core.Scenario
             _gameScreen.Clear();
             
             _selectedLetters.Clear();
-            _foundedWords.Clear();
+            Preset.FoundedWords.Clear();
         }
     }
 
-    public struct LevelScenarioData
+    [Serializable]
+    public class LevelScenarioData
     {
-        public readonly int LevelIndex;
-        public readonly int RealLevelNumber;
-        public readonly int MaxGridsCount;
-
-        public LevelScenarioData(int levelIndex, int realLevelNumber, int maxGridsCount)
-        {
-            LevelIndex = levelIndex;
-            RealLevelNumber = realLevelNumber;
-            MaxGridsCount = maxGridsCount;
-        }
-
+        public int LevelIndex;
+        public List<string> FoundedWords = new();
     }
 }
