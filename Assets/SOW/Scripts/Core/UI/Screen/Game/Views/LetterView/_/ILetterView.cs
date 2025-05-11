@@ -2,6 +2,6 @@
 {
     public interface ILetterView
     {
-        void SetSize(int pixelSize);
+        void SetSize(float pixelSize);
     }
 }

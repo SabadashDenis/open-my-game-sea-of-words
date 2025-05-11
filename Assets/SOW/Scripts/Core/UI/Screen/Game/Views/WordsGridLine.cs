@@ -14,6 +14,8 @@ public class WordsGridLine : View
 
     private List<LetterView> _letters = new();
     
+    public List<LetterView> Letters => _letters;
+    
     public void SetupWord(string word)
     {
         Clear();

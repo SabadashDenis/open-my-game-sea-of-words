@@ -8,7 +8,7 @@ using SoW.Scripts.Core.UI.Screen.Game.Views;
 
 namespace SoW.Scripts.Core.Scenario
 {
-    public class LevelScenario : AsyncScenarioBase<int>
+    public class LevelScenario : AsyncScenarioBase<LevelScenarioData>
     {
         private GameScreen _gameScreen;
         private LevelData _levelData;
@@ -21,16 +21,21 @@ namespace SoW.Scripts.Core.Scenario
             _gameScreen = data.UI.GetScreen<GameScreen>();
         }
 
-        protected override void PlayInternal()
+        protected override void PlayInternal() { }
+
+        protected override async UniTask AsyncPlayInternal(CancellationToken token)
         {
             var levelsData = Data.Config.Levels.Data.data;
-            _levelData = levelsData[Preset % levelsData.Count];
+            _levelData = levelsData[Preset.LevelIndex % levelsData.Count];
             
             GetLettersChain(_levelData.words);
             
             _gameScreen.Show();
-
-            _gameScreen.WordsGrid.SetupWords(_levelData.words);
+            
+            var bestLettersSize = await _gameScreen.GetBestLettersFitSize(_levelData.words, Preset.MaxGridsCount);
+            
+            _gameScreen.SetLevel(Preset.RealLevelNumber);
+            _gameScreen.SetupWords(_levelData.words, bestLettersSize);
             _gameScreen.InputCircle.SetupLetters(GetLettersChain(_levelData.words));
             
             Data.Input.Tap.Released += ProcessInputFinish;
@@ -40,10 +45,6 @@ namespace SoW.Scripts.Core.Scenario
                 inputLetterView.Hover += OnLetterHover;
                 inputLetterView.Tap += OnLetterTap;
             }
-        }
-
-        protected override async UniTask AsyncPlayInternal(CancellationToken token)
-        {
             await UniTask.WaitUntil(() => _foundedWords.Count == _levelData.words.Length, cancellationToken: token);
         }
 
@@ -139,8 +140,9 @@ namespace SoW.Scripts.Core.Scenario
             
             if (_levelData.words.Any(word => word == inputStr))
             {
-                _gameScreen.WordsGrid.ShowWord(inputStr);
+                _gameScreen.ShowWord(inputStr);
                 _foundedWords.Add(inputStr);
+                this.Log(LogType.Info, $"FoundedWords: {_foundedWords.Count}/{_levelData.words.Length}");
             }
             
             _selectedLetters.Clear();
@@ -157,6 +159,26 @@ namespace SoW.Scripts.Core.Scenario
             }
             
             Data.Input.Tap.Released -= ProcessInputFinish;
+            
+            _gameScreen.Clear();
+            
+            _selectedLetters.Clear();
+            _foundedWords.Clear();
         }
+    }
+
+    public struct LevelScenarioData
+    {
+        public readonly int LevelIndex;
+        public readonly int RealLevelNumber;
+        public readonly int MaxGridsCount;
+
+        public LevelScenarioData(int levelIndex, int realLevelNumber, int maxGridsCount)
+        {
+            LevelIndex = levelIndex;
+            RealLevelNumber = realLevelNumber;
+            MaxGridsCount = maxGridsCount;
+        }
+
     }
 }

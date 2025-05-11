@@ -303,7 +303,9 @@ MonoBehaviour:
       Data: 
   canvasGroup: {fileID: 5383386690365810525}
   rectTransform: {fileID: 1886905373487419105}
-  wordsGrid: {fileID: 4255581598789559968}
+  levelText: {fileID: 8342211543452978165}
+  layoutGroup: {fileID: 799957590638966040}
+  wordGridPrefab: {fileID: 7407858616011067842, guid: 55bdc03fa0e573946baaceb96f666b41, type: 3}
   inputCircle: {fileID: 3409244105767289301}
   inputResult: {fileID: 4085092441645686096}
 --- !u!1 &5582182064078684050
@@ -381,7 +383,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &6836549157563750572
+--- !u!1 &5912534012332648507
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -389,29 +391,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1527643515970292734}
-  - component: {fileID: 4255581598789559968}
-  - component: {fileID: 5893129741061538373}
+  - component: {fileID: 8759572183903837830}
+  - component: {fileID: 799957590638966040}
   m_Layer: 0
-  m_Name: words_grid
+  m_Name: word_grids
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1527643515970292734
+--- !u!224 &8759572183903837830
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6836549157563750572}
+  m_GameObject: {fileID: 5912534012332648507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4323633748007494101}
+  m_Children: []
   m_Father: {fileID: 1886905373487419105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.55}
@@ -419,49 +419,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4255581598789559968
+--- !u!114 &799957590638966040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6836549157563750572}
+  m_GameObject: {fileID: 5912534012332648507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 370cc80c9f0e4a8eb93d03ed6b16814b, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: InAnimation
-      Entry: 6
-      Data: 
-    - Name: OutAnimation
-      Entry: 6
-      Data: 
-  canvasGroup: {fileID: 5893129741061538373}
-  rectTransform: {fileID: 1527643515970292734}
-  linePrefab: {fileID: 4418506658459441067, guid: 7d1bf4ab3ea44414c866d3dc43de44f8, type: 3}
-  linesRoot: {fileID: 4323633748007494101}
---- !u!225 &5893129741061538373
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6836549157563750572}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  m_Padding:
+    m_Left: 50
+    m_Right: 50
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 50
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &7114838731190121878
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,7 +635,7 @@ RectTransform:
   m_Children:
   - {fileID: 3117021839518907461}
   - {fileID: 5005578030090815627}
-  - {fileID: 1527643515970292734}
+  - {fileID: 8759572183903837830}
   - {fileID: 7458288198067413018}
   m_Father: {fileID: 3605405763756394446}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -736,68 +719,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
---- !u!1 &8242335716838494030
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4323633748007494101}
-  - component: {fileID: 2242917528533568270}
-  m_Layer: 0
-  m_Name: vertical_layout_group
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4323633748007494101
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8242335716838494030}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1527643515970292734}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2242917528533568270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8242335716838494030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_Spacing: 10
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &9180254819872963905
 GameObject:
   m_ObjectHideFlags: 0

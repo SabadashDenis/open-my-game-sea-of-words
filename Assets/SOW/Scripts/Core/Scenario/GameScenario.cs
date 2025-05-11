@@ -19,7 +19,7 @@ namespace SoW.Scripts.Core.Scenario
         {
             while (!Token.IsCancellationRequested)
             {
-                _levelScenario.Play(_currentLevelIndex);
+                _levelScenario.Play(new(_currentLevelIndex, _currentLevelIndex + 1, 3));
                 await UniTask.WaitWhile(() => _levelScenario.IsPlaying, cancellationToken: Token);
                 _currentLevelIndex++;
             }

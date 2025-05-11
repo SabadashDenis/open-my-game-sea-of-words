@@ -28,7 +28,7 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
         }
 
         [FoldoutGroup("API"), Button]
-        public void SetSize(int pixelSize)
+        public void SetSize(float pixelSize)
         {
             RT.sizeDelta = Vector2.one * pixelSize;
         }
