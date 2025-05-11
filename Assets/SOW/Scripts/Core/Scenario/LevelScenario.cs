@@ -8,7 +8,6 @@ using SoW.Scripts.Core.Save._;
 using SoW.Scripts.Core.Scenario._;
 using SoW.Scripts.Core.UI.Screen.Game.Views;
 using SoW.Scripts.Core.Utility;
-using UnityEngine;
 
 namespace SoW.Scripts.Core.Scenario
 {
@@ -131,6 +130,7 @@ namespace SoW.Scripts.Core.Scenario
             Data.Input.Click.Released -= ProcessInputFinish;
             
             _gameScreen.Clear();
+            _gameScreen.Hide();
             
             _selectedLetters.Clear();
             Preset.FoundedWords.Clear();

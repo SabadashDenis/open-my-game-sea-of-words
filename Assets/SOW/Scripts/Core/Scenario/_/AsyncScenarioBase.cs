@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using SoW.Scripts.Core.Configs._;
+using SoW.Scripts.Core.Input._;
 using SoW.Scripts.Core.Utility.Object.Initable;
 
 namespace SoW.Scripts.Core.Scenario._
@@ -74,6 +76,22 @@ namespace SoW.Scripts.Core.Scenario._
 
             if (!token.IsCancellationRequested)
                 Stop();
+        }
+    }
+    
+    public struct ScenarioData
+    {
+        public readonly UISystem UI;
+        public readonly ScenarioSystem Scenario;
+        public readonly InputSystem Input;
+        public readonly ConfigSystem Config;
+        
+        public ScenarioData(UISystem ui, ScenarioSystem scenario, InputSystem input, ConfigSystem config)
+        {
+            UI = ui;
+            Scenario = scenario;
+            Input = input;
+            Config = config;
         }
     }
 }

@@ -12,8 +12,8 @@ namespace SoW.Scripts.Core.UI
         [SerializeField] private CanvasGroup canvasGroup;
         [SerializeField] private RectTransform rectTransform;
         
-        [TypeFilter("FilterAnimations")] [SerializeField] private IViewAnimator InAnimation;
-        [TypeFilter("FilterAnimations")] [SerializeField] private IViewAnimator OutAnimation;
+        [TypeFilter("FilterAnimations")] [SerializeField] private IViewAnimator inAnimation;
+        [TypeFilter("FilterAnimations")] [SerializeField] private IViewAnimator outAnimation;
         
         protected Tween animationTween;
         
@@ -26,11 +26,11 @@ namespace SoW.Scripts.Core.UI
         public Tween Show()
         {
             animationTween?.Kill();
-            if (InAnimation != null)
+            if (inAnimation != null)
             {
                 OnShowStart(false);
                 gameObject.SetActive(true);
-                animationTween = InAnimation.Animate(this)
+                animationTween = inAnimation.Animate(this)
                     .OnComplete(() =>
                     {
                         OnShowEnd(false);
@@ -53,10 +53,10 @@ namespace SoW.Scripts.Core.UI
             
             OnShowStart(true);
 
-            if (InAnimation != null)
+            if (inAnimation != null)
             {
                 gameObject.SetActive(true);
-                InAnimation.AnimateImmediately(this);
+                inAnimation.AnimateImmediately(this);
             }
             else
             {
@@ -71,10 +71,10 @@ namespace SoW.Scripts.Core.UI
         {
             animationTween?.Kill(true);
 
-            if (OutAnimation != null)
+            if (outAnimation != null)
             {
                 OnHideStart(false);
-                animationTween = OutAnimation.Animate(this)
+                animationTween = outAnimation.Animate(this)
                     .OnComplete(() =>
                     {
                         gameObject.SetActive(false);
@@ -98,9 +98,9 @@ namespace SoW.Scripts.Core.UI
             
             OnHideStart(true);
 
-            if (OutAnimation != null)
+            if (outAnimation != null)
             {
-                OutAnimation.AnimateImmediately(this);
+                outAnimation.AnimateImmediately(this);
                 gameObject.SetActive(false);
             }
             else
@@ -118,7 +118,7 @@ namespace SoW.Scripts.Core.UI
         protected virtual void OnHideEnd(bool immediately) { }
         
         
-        private IEnumerable<Type> FilterAnimations()
+        protected IEnumerable<Type> FilterAnimations()
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
