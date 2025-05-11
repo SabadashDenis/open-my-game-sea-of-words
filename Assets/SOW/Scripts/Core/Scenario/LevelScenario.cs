@@ -138,7 +138,7 @@ namespace SoW.Scripts.Core.Scenario
                 inputStr += selectedLetter.CurrentLetter;
             }
             
-            if (_levelData.words.Any(word => word == inputStr))
+            if (_levelData.words.Any(word => word == inputStr) && !_foundedWords.Contains(inputStr))
             {
                 _gameScreen.ShowWord(inputStr);
                 _foundedWords.Add(inputStr);
