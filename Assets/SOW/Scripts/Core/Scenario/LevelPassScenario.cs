@@ -20,6 +20,8 @@ namespace SoW.Scripts.Core.Scenario
 
         protected override async UniTask AsyncPlayInternal(CancellationToken token)
         {
+            _nextLvlClicked = false;
+            
             _winScreen.NextLvlBtn.OnClickEvent += ToNextLevel;
 
             _winScreen.Show();

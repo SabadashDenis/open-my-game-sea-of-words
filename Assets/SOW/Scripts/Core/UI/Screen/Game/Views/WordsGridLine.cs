@@ -56,7 +56,8 @@ public class WordsGridLine : View
         var letterView = SoWPool.I.LettersPool.Pop<LetterView>(letterRoot);
         letterView.SetLetter(letter);
         letterView.SetSize(letterSize);
-        letterView.SetColorScheme(LetterColorSchemeType.Normal);
+        letterView.SetColorScheme(LetterColorSchemeType.Hidden);
+
 
         _letters.Add(letterView);
     }

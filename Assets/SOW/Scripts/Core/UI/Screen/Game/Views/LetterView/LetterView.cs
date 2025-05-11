@@ -59,7 +59,8 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
     public enum LetterColorSchemeType
     {
         Normal,
-        Selected
+        Selected,
+        Hidden
     }
 
     public struct LetterColorScheme

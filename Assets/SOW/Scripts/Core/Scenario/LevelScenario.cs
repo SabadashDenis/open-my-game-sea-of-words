@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using SoW.Scripts.Core.Configs;
 using SoW.Scripts.Core.Save._;
 using SoW.Scripts.Core.Scenario._;
@@ -23,6 +25,15 @@ namespace SoW.Scripts.Core.Scenario
             _gameScreen = data.UI.GetScreen<GameScreen>();
         }
 
+        [Button]
+        private void Pass()
+        {
+            while (Preset.FoundedWords.Count < _levelData.words.Length)
+            {
+                Preset.FoundedWords.Add("aa");
+            }
+        }
+        
         protected override void PlayInternal() { }
 
         protected override async UniTask AsyncPlayInternal(CancellationToken token)
@@ -54,6 +65,15 @@ namespace SoW.Scripts.Core.Scenario
                 inputLetterView.Tap += OnLetterTap;
             }
             await UniTask.WaitUntil(() => Preset.FoundedWords.Count == _levelData.words.Length, cancellationToken: token);
+
+            await UniTask.Delay(TimeSpan.FromSeconds(1f), cancellationToken: token);
+            
+            var levePassScenario = Data.Scenario.GetScenario<LevelPassScenario>().Play(new(Preset.LevelIndex), Token);
+            
+            Preset.LevelIndex++;
+            SaveSystem.Saver.Save<LevelScenarioData>();
+            
+            await UniTask.WaitWhile(() => levePassScenario.IsPlaying, cancellationToken: token);
         }
 
         private void OnLetterHover(SelectableLetterView letterView)
