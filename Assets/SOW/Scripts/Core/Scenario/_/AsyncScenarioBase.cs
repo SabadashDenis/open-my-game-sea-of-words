@@ -37,10 +37,6 @@ namespace SoW.Scripts.Core.Scenario._
             _cancellation = CancellationTokenSource.CreateLinkedTokenSource(token);
 
             IsPlaying = true;
-            PlayInternal();
-
-            if (!IsPlaying)
-                return this;
 
             AsyncPlay(_cancellation.Token).Forget();
 
@@ -58,9 +54,8 @@ namespace SoW.Scripts.Core.Scenario._
             IsPlaying = false;
         }
         
-        protected abstract void PlayInternal();
         protected abstract void StopInternal();
-        protected virtual UniTask AsyncPlayInternal(CancellationToken token) => UniTask.WaitUntilCanceled(token);
+        protected abstract UniTask AsyncPlayInternal(CancellationToken token);
 
         private async UniTask AsyncPlay(CancellationToken token)
         {

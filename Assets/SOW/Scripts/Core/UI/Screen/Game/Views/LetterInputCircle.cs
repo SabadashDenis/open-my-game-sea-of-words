@@ -39,7 +39,7 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
         {
             foreach (var letterView in _letterViews)
             {
-                letterView.SetSelected(false, false);
+                letterView.SetSelected(false);
             }
         }
 

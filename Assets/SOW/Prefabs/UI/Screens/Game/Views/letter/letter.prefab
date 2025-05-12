@@ -14,38 +14,23 @@ PrefabInstance:
       objectReference: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
     - target: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
       value: '"path":"colorConfig.{0es}","value":{"$id":0,"$type":"SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorScheme,
-        Assembly-CSharp","LetterColor":{"$type":"UnityEngine.Color, UnityEngine.CoreModule",0.3019608,0.3019608,0.3019608,1},"BgColor":{"$type":"UnityEngine.Color,
-        UnityEngine.CoreModule",1,1,1,1}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[1]
-      value: '"path":"colorConfig.{0es}.BgColor","value":{"$id":0,"$type":"UnityEngine.Color,
-        UnityEngine.CoreModule",1,1,1,1}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[2]
-      value: '"path":"colorConfig.{0es}.LetterColor","value":{"$id":0,"$type":"UnityEngine.Color,
-        UnityEngine.CoreModule",0.3019608,0.3019608,0.3019608,1}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[3]
-      value: '"path":"colorConfig.{1es}","value":{"$id":0,"$type":"SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorScheme,
         Assembly-CSharp","LetterColor":{"$type":"UnityEngine.Color, UnityEngine.CoreModule",1,1,1,1},"BgColor":{"$type":"UnityEngine.Color,
         UnityEngine.CoreModule",0.396078438,0.7411765,0.396078438,1}}'
       objectReference: {fileID: 0}
     - target: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[4]
-      value: '"path":"colorConfig.{1es}.BgColor","value":{"$id":0,"$type":"UnityEngine.Color,
-        UnityEngine.CoreModule",0.396078438,0.7411765,0.396078438,1}'
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"colorConfig.{1es}","value":{"$id":0,"$type":"SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorScheme,
+        Assembly-CSharp","LetterColor":{"$type":"UnityEngine.Color, UnityEngine.CoreModule",1,1,1,1},"BgColor":{"$type":"UnityEngine.Color,
+        UnityEngine.CoreModule",1,1,1,1}}'
       objectReference: {fileID: 0}
     - target: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[5]
-      value: '"path":"colorConfig.{1es}.LetterColor","value":{"$id":0,"$type":"UnityEngine.Color,
+      propertyPath: serializationData.PrefabModifications.Array.data[2]
+      value: '"path":"colorConfig.{1es}.BgColor","value":{"$id":0,"$type":"UnityEngine.Color,
         UnityEngine.CoreModule",1,1,1,1}'
       objectReference: {fileID: 0}
     - target: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}

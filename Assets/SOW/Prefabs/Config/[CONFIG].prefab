@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsConfig:
     maxGridsCount: 3
-    levelPassDelay: 1
+    endLevelDelay: 1
     levelsData:
       data:
       - words:

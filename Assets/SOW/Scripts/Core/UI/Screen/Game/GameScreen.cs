@@ -61,19 +61,26 @@ public class GameScreen : ScreenViewBase
         _words.Clear();
     }
 
-    public float GetLettersFitSize(string[] words, int targetWordGrids)
+    public float GetCurrentLettersFitSize(string[] words)
     {
-        var cellsY = words.Length - (words.Length / targetWordGrids) * (targetWordGrids - 1); //max words count
-        var cellsX = words.Max(word => word.Length); //longest word letters count
+        var currentGridsCount = _wordGrids.Count;
 
-        var gridUsefulSize = _wordGrids.First().LayoutGroup.GetUsefulSize(cellsY);
+        if (currentGridsCount > 0)
+        {
+            var cellsY = words.Length - (words.Length / currentGridsCount) * (currentGridsCount - 1); //max words count
+            var cellsX = words.Max(word => word.Length); //longest word letters count
 
-        var letterFitSize =
-            (gridUsefulSize - Vector2.right * (cellsX - 1) * 10f) / new Vector2(cellsX, cellsY); // Todo: refactor
+            var gridUsefulSize = _wordGrids.First().LayoutGroup.GetUsefulSize(cellsY);
 
-        var resultFitSize = letterFitSize.x > letterFitSize.y ? letterFitSize.y : letterFitSize.x;
+            var letterFitSize =
+                (gridUsefulSize - Vector2.right * (cellsX - 1) * 10f) / new Vector2(cellsX, cellsY); // Todo: refactor
 
-        return resultFitSize;
+            var resultFitSize = letterFitSize.x > letterFitSize.y ? letterFitSize.y : letterFitSize.x;
+
+            return resultFitSize;
+        }
+
+        return 0;
     }
 
     public WordsGrid AddWordsGrid()

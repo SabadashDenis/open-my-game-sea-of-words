@@ -5,12 +5,14 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using SoW.Scripts.Core.Configs;
 using SoW.Scripts.Core.Pool;
 using SoW.Scripts.Core.Save._;
 using SoW.Scripts.Core.Scenario._;
 using SoW.Scripts.Core.UI.Screen.Game.Views;
 using SoW.Scripts.Core.Utility;
+using SoW.Scripts.Core.Utility.Extended;
 using UnityEngine;
 
 namespace SoW.Scripts.Core.Scenario
@@ -20,24 +22,11 @@ namespace SoW.Scripts.Core.Scenario
         private GameScreen _gameScreen;
         private LevelData _levelData;
 
-        private List<SelectableLetterView> _selectedLetters = new();
+        private readonly List<SelectableLetterView> _selectedLetters = new();
 
         protected override void InitInternal(ScenarioData data)
         {
             _gameScreen = data.UI.GetScreen<GameScreen>();
-        }
-
-        [Button]
-        private void Pass()
-        {
-            while (Preset.FoundedWords.Count < _levelData.words.Length)
-            {
-                Preset.FoundedWords.Add("aa");
-            }
-        }
-
-        protected override void PlayInternal()
-        {
         }
 
         protected override async UniTask AsyncPlayInternal(CancellationToken token)
@@ -53,12 +42,9 @@ namespace SoW.Scripts.Core.Scenario
 
             var commonLetters = WordsUtility.GetCommonLetters(_levelData.words);
             _gameScreen.InputCircle.SetupLetters(commonLetters);
-
-            foreach (var foundedWord in Preset.FoundedWords)
-            {
-                _gameScreen.ShowWord(foundedWord, true);
-            }
-
+            
+            Preset.FoundedWords.ForEach(word => _gameScreen.ShowWord(word, true));
+            
             Data.Input.Click.Released += ProcessInputFinish;
 
             foreach (var inputLetterView in _gameScreen.InputCircle.LetterViews)
@@ -67,20 +53,11 @@ namespace SoW.Scripts.Core.Scenario
                 inputLetterView.Tap += OnLetterTap;
             }
 
-            await UniTask.WaitUntil(() => Preset.FoundedWords.Count == _levelData.words.Length,
-                cancellationToken: token);
-
-            await UniTask.Delay(TimeSpan.FromSeconds(Data.Config.Levels.LevelPassDelay), cancellationToken: token);
-
-            var levePassScenario = Data.Scenario.GetScenario<LevelPassScenario>().Play(new(Preset.LevelIndex), Token);
-
-            Preset.LevelIndex++;
-            SaveSystem.Saver.Save<LevelScenarioData>();
-
-            await UniTask.WaitWhile(() => levePassScenario.IsPlaying, cancellationToken: token);
+            await UniTask.WaitUntil(() => Preset.FoundedWords.Count == _levelData.words.Length, cancellationToken: token);
+            await UniTask.Delay(TimeSpan.FromSeconds(Data.Config.Levels.EndLevelDelay), cancellationToken: token);
         }
 
-        public async UniTask<float> GetBestLettersFitSize(string[] words, int maxGrids)
+        private async UniTask<float> GetBestLettersFitSize(string[] words, int maxGrids)
         {
             float bestFitSize = 0;
             float bestGridsCount = 0;
@@ -95,7 +72,7 @@ namespace SoW.Scripts.Core.Scenario
                 Canvas.ForceUpdateCanvases();
                 await UniTask.Yield();
 
-                var lettersFitSize = _gameScreen.GetLettersFitSize(words, i);
+                var lettersFitSize = _gameScreen.GetCurrentLettersFitSize(words);
 
                 this.Log(LogType.Info, $"Letters fit size: {lettersFitSize}, Grids[{i}]");
 
@@ -130,15 +107,14 @@ namespace SoW.Scripts.Core.Scenario
                 if (letterView.IsSelected)
                 {
                     var deselectedLetterIndex = _selectedLetters.IndexOf(letterView);
-                    var lettersToRemove =
-                        _selectedLetters.Count - deselectedLetterIndex - 1; //-1 to save hovered letter selection
+                    var lettersToRemove = _selectedLetters.Count - deselectedLetterIndex - 1; //-1 to save hovered letter selection
 
                     for (int i = 0; i < lettersToRemove; i++)
                     {
-                        var lastLetterIndex = _selectedLetters.Count - 1;
+                        var lastLetter = _selectedLetters.Last();
 
-                        _selectedLetters[lastLetterIndex].SetSelected(false);
-                        _selectedLetters.RemoveAt(lastLetterIndex);
+                        lastLetter.SetSelected(false);
+                        _selectedLetters.Remove(lastLetter);
 
                         _gameScreen.InputResult.RemoveLast();
                     }
@@ -165,26 +141,19 @@ namespace SoW.Scripts.Core.Scenario
         private void ProcessInputFinish()
         {
             string inputStr = string.Empty;
+            _selectedLetters.ForEach(letter => inputStr += letter.CurrentLetter);
 
-            foreach (var selectedLetter in _selectedLetters)
-            {
-                inputStr += selectedLetter.CurrentLetter;
-            }
-
-            if (_levelData.words.Any(word => word == inputStr) && !Preset.FoundedWords.Contains(inputStr))
+            if (_levelData.words.Contains(inputStr) && !Preset.FoundedWords.Contains(inputStr))
             {
                 _gameScreen.ShowWord(inputStr);
                 Preset.FoundedWords.Add(inputStr);
-                this.Log(LogType.Info, $"FoundedWords: {Preset.FoundedWords.Count}/{_levelData.words.Length}");
             }
-
-            _selectedLetters.Clear();
+            
             _gameScreen.InputCircle.ClearSelection();
             _gameScreen.InputResult.Clear();
+            _selectedLetters.Clear();
 
             SaveSystem.Saver.Save<LevelScenarioData>();
-            this.Log(LogType.Info, $"Save! Level: [{SaveSystem.Saver.Get<LevelScenarioData>().LevelIndex}], " +
-                                   $"Words: [{SaveSystem.Saver.Get<LevelScenarioData>().FoundedWords.Count}]");
         }
 
         protected override void StopInternal()
@@ -198,10 +167,9 @@ namespace SoW.Scripts.Core.Scenario
             Data.Input.Click.Released -= ProcessInputFinish;
 
             _gameScreen.Clear();
-            _gameScreen.Hide();
-
             _selectedLetters.Clear();
-            Preset.FoundedWords.Clear();
+            
+            _gameScreen.Hide();
         }
     }
 
@@ -210,5 +178,11 @@ namespace SoW.Scripts.Core.Scenario
     {
         public int LevelIndex;
         public List<string> FoundedWords = new();
+
+        public void ToNextLevel()
+        {
+            LevelIndex++;
+            FoundedWords.Clear();
+        }
     }
 }

@@ -14,11 +14,7 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
         [SerializeField] private TMP_Text letterText;
         [SerializeField] private Image letterBg;
         
-        public event Action<char, bool> OnSelectionChanged = delegate { };
-        
         private char _currentLetter;
-
-        public bool IsSelected { get; private set; }
         public char CurrentLetter => _currentLetter;
         
         public void SetLetter(char letter)
@@ -41,24 +37,11 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
             letterText.color = targetScheme.LetterColor;
             letterBg.color = targetScheme.BgColor;
         }
-
-        public void SetSelected(bool condition, bool invokeEvent = true)
-        {
-            var colorScheme = condition ? LetterColorSchemeType.Selected : LetterColorSchemeType.Normal;
-            SetColorScheme(colorScheme);
-
-            IsSelected = condition;
-
-            if (invokeEvent)
-                OnSelectionChanged.Invoke(_currentLetter, condition);
-        }
-
-        public void ClearSelection() => SetSelected(false);
     }
 
     public enum LetterColorSchemeType
     {
-        Normal,
+        Visible,
         Selected,
         Hidden
     }

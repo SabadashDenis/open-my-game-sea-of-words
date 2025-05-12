@@ -13,7 +13,6 @@ public class WordsGridLine : View
     [SerializeField] private float showLetterDelay;
 
     private List<LetterView> _letters = new();
-
     public List<LetterView> Letters => _letters;
 
     public void SetupWord(string word)
@@ -37,7 +36,7 @@ public class WordsGridLine : View
                 await UniTask.Delay(TimeSpan.FromSeconds(showLetterDelay), cancellationToken: token);
             }
 
-            letterView.SetColorScheme(LetterColorSchemeType.Selected);
+            letterView.SetColorScheme(LetterColorSchemeType.Visible);
         }
     }
 

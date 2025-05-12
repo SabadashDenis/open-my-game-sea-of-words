@@ -16,8 +16,6 @@ namespace SoW.Scripts.Core.Scenario
             _winScreen = Data.UI.GetScreen<WinScreen>();
         }
 
-        protected override void PlayInternal() { }
-
         protected override async UniTask AsyncPlayInternal(CancellationToken token)
         {
             _nextLvlClicked = false;

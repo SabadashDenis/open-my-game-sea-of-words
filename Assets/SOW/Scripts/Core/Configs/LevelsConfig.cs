@@ -4,6 +4,7 @@ using System.IO;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using IOException = System.IO.IOException;
 
 namespace SoW.Scripts.Core.Configs
@@ -12,14 +13,14 @@ namespace SoW.Scripts.Core.Configs
     public class LevelsConfig : ConfigBase<LevelsConfigData>
     {
         [SerializeField] private int maxGridsCount;
-        [SerializeField] private float levelPassDelay;
+        [SerializeField] private float endLevelDelay;
         [SerializeField] private LevelsConfigData levelsData;
 
         public override LevelsConfigData Data => levelsData;
 
         public LevelData GetData(int levelIndex) => levelsData.data[levelIndex % levelsData.data.Count];
         public int MaxGrids => maxGridsCount;
-        public float LevelPassDelay => levelPassDelay;
+        public float EndLevelDelay => endLevelDelay;
         
 #if UNITY_EDITOR
         [Button]
