@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
@@ -7,16 +6,13 @@ using SoW.Scripts.Core.UI;
 using SoW.Scripts.Core.UI.Screen.Game.Views;
 using SoW.Scripts.Core.Utility.Extended;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using LogType = SoW.Scripts.Core.LogType;
 
 public class GameScreen : ScreenViewBase
 {
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private HorizontalLayoutGroup layoutGroup;
-    [SerializeField] private WordsGrid wordGridPrefab;
     [SerializeField] private LetterInputCircle inputCircle;
     [SerializeField] private LetterInputResult inputResult;
 
@@ -30,82 +26,42 @@ public class GameScreen : ScreenViewBase
     {
         levelText.text = $"Уровень {level}";
     }
-    
+
     public void SetupWords(string[] words, float letterSize)
     {
         var wordPacks = ListExtensions.SplitList(words.ToList(), _wordGrids.Count);
-
-        List<LetterView> allLetterViews = new();
 
         for (int i = 0; i < wordPacks.Count; i++)
         {
             var targetWordsGrid = _wordGrids[i];
 
-            targetWordsGrid.SetupWords(wordPacks[i].ToArray());
-            _words.AddRange(targetWordsGrid.Words);
-
-            foreach (var wordLine in targetWordsGrid.Words.Values)
+            foreach (var word in wordPacks[i])
             {
-                allLetterViews.AddRange(wordLine.Letters);
+                var wordLine = targetWordsGrid.AddWord(word);
+                _words.Add(word, wordLine);
             }
         }
-        
-        foreach (var letterView in allLetterViews)
+
+        foreach (var wordLine in _words.Values)
         {
-            letterView.SetSize(letterSize);
+            foreach (var letterView in wordLine.Letters)
+            {
+                letterView.SetSize(letterSize);
+            }
         }
     }
 
     public void Clear()
     {
-        foreach (var grid in _wordGrids)
+        while (_wordGrids.Count > 0)
         {
-            grid.Clear();
-            Destroy(grid.gameObject);
+            RemoveGrid(_wordGrids[0]);
         }
-        
-        _wordGrids.Clear();
+
         _words.Clear();
     }
 
-    public async UniTask<float> GetBestLettersFitSize(string[] words, int maxGrids)
-    {
-        float bestFitSize = 0f;
-        float bestGridsCount = 0;
-        
-        for (int i = 0; i < maxGrids; i++)
-        {
-            AddWordsGrid();
-
-            await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-            
-            var lettersFitSize = GetLettersFitSize(words, i + 1);
-
-            this.Log(LogType.Info, $"Letters fit size: {lettersFitSize}, Grids[{i + 1}]");
-
-            if (lettersFitSize > bestFitSize)
-            {
-                bestFitSize = lettersFitSize;
-                bestGridsCount = i + 1;
-            }
-        }
-
-        if (bestGridsCount < maxGrids)
-        {
-            var gridsToRemove = maxGrids - bestGridsCount;
-
-            for (int i = 0; i < gridsToRemove; i++)
-            {
-                RemoveGrid();
-            }
-        }
-
-        this.Log(LogType.Info, $"Best fit size: {bestFitSize}, Grids[{bestGridsCount}]");
-
-        return bestFitSize;
-    }
-
-    private float GetLettersFitSize(string[] words, int targetWordGrids)
+    public float GetLettersFitSize(string[] words, int targetWordGrids)
     {
         var cellsY = words.Length - (words.Length / targetWordGrids) * (targetWordGrids - 1); //max words count
         var cellsX = words.Max(word => word.Length); //longest word letters count
@@ -120,19 +76,20 @@ public class GameScreen : ScreenViewBase
         return resultFitSize;
     }
 
-    private void AddWordsGrid()
+    public WordsGrid AddWordsGrid()
     {
-        var newGrid = Instantiate(wordGridPrefab, layoutGroup.transform);
+        var newGrid = SoWPool.I.WordGridsPool.Pop<WordsGrid>(layoutGroup.transform);
         _wordGrids.Add(newGrid);
+        
+        return newGrid;
     }
 
-    private void RemoveGrid()
+    public void RemoveGrid(WordsGrid grid)
     {
-        Destroy(_wordGrids.First().gameObject);
-        _wordGrids.RemoveAt(0);
+        grid.Clear();
+        _wordGrids.Remove(grid);
+        SoWPool.I.WordGridsPool.Push(grid);
     }
-
-    private Vector2 GetWordsPanelUsefulSize() => layoutGroup.GetUsefulSize(3);
 
     public void ShowWord(string word, bool immediately = false)
     {

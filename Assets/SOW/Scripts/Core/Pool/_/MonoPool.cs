@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using SoW.Scripts.Core.Factory._;
+using SoW.Scripts.Core.Utility.Object.Initable;
 using UnityEngine;
 
 
 namespace SoW.Scripts.Core
 {
     [Serializable]
-    public class MonoPool<TObject> : MonoBehaviour, IPool<TObject>
+    public class MonoPool<TObject> : InitableBehaviour, IPool<TObject>
         where TObject : MonoBehaviour
     {
         [SerializeField] private List<TObject> prefabs = new();
 
         private readonly Dictionary<Type, Stack<TObject>> _stack = new();
-
-        private void Awake()
+        
+        protected override void InitInternal()
         {
             foreach (var prefab in prefabs)
             {

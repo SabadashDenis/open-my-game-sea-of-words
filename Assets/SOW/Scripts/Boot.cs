@@ -22,12 +22,11 @@ public class Boot : MonoBehaviour
         var systemData = new SystemData(uiSystem, scenarioSystem, poolSystem, inputSystem, configSystem);
         
         saveSystem.Init(systemData);
-        
-        uiSystem.Init(systemData);
-        scenarioSystem.Init(systemData);
         poolSystem.Init(systemData);
+        uiSystem.Init(systemData);
         inputSystem.Init(systemData);
         configSystem.Init(systemData);
+        scenarioSystem.Init(systemData);
         
         scenarioSystem.GetScenario<GameScenario>().Play();
     }

@@ -4,6 +4,9 @@ namespace SoW.Scripts.Core.Utility.Extended
 {
     public static class ListExtensions
     {
+        /// <summary>
+        /// Split list into equal parts: List[11] -> List[4] + List[4] + List[3] 
+        /// </summary>
         public static List<List<T>> SplitList<T>(List<T> list, int numberOfParts)
         {
             List<List<T>> result = new List<List<T>>();

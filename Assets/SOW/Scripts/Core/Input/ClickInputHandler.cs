@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using SoW.Scripts.Core.Input._;
+using TouchPhase = UnityEngine.TouchPhase;
 
 namespace SoW.Scripts.Core.Input
 {
@@ -30,7 +32,7 @@ namespace SoW.Scripts.Core.Input
         private bool IsTapStarted()
         {
 #if !UNITY_EDITOR && UNITY_ANDROID
-            return UnityEngine.Input.touches.Any(touch => touch.phase == TouchPhase.Began);
+            return UnityEngine.Input.touches.Any(touch => touch.phase is TouchPhase.Began);
 #endif
             return UnityEngine.Input.GetMouseButtonDown(0);
         }

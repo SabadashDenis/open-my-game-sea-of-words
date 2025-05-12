@@ -11,10 +11,16 @@ namespace SoW.Scripts.Core.Configs
     [Serializable]
     public class LevelsConfig : ConfigBase<LevelsConfigData>
     {
+        [SerializeField] private int maxGridsCount;
+        [SerializeField] private float levelPassDelay;
         [SerializeField] private LevelsConfigData levelsData;
 
         public override LevelsConfigData Data => levelsData;
 
+        public LevelData GetData(int levelIndex) => levelsData.data[levelIndex % levelsData.data.Count];
+        public int MaxGrids => maxGridsCount;
+        public float LevelPassDelay => levelPassDelay;
+        
 #if UNITY_EDITOR
         [Button]
         private void ParseLevelDataFromJson()

@@ -7,40 +7,30 @@ namespace SoW.Scripts.Core.UI.Screen.Game.Views
 {
     public class WordsGrid : View
     {
-        [SerializeField] private WordsGridLine linePrefab;
         [SerializeField] private Transform linesRoot;
         [SerializeField] private VerticalLayoutGroup layoutGroup;
+        
+        private List<WordsGridLine> _wordLines = new ();
         public VerticalLayoutGroup LayoutGroup => layoutGroup;
         
-        private Dictionary<string, WordsGridLine> _words = new ();
-        
-        public IReadOnlyDictionary<string, WordsGridLine> Words => _words;
-        
-        [FoldoutGroup("API"), Button]
-        public void SetupWords(string[] words)
-        {
-            foreach (var word in words)
-            {
-                AddWord(word);
-            }
-        }
-
         public void Clear()
         {
-            foreach (var line in _words.Values)
+            foreach (var line in _wordLines)
             {
                 line.Clear();
-                Destroy(line.gameObject);
+                SoWPool.I.WordGridLinesPool.Push(line);
             }
             
-            _words.Clear();
+            _wordLines.Clear();
         }
         
-        private void AddWord(string word)
+        public WordsGridLine AddWord(string word)
         {
-            var newWordLine = Instantiate(linePrefab, linesRoot);
+            var newWordLine = SoWPool.I.WordGridLinesPool.Pop<WordsGridLine>(linesRoot);
             newWordLine.SetupWord(word);
-            _words.Add(word, newWordLine);
+            _wordLines.Add(newWordLine);
+            
+            return newWordLine;
         }
     }
 }
