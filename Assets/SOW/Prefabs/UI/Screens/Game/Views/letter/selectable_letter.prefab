@@ -1,0 +1,355 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8801387995939868
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+    - target: {fileID: 1284609381857505869, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_Name
+      value: selectable_letter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 987828413190282129, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1284609381857505869, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1155598010748464916}
+  m_SourcePrefab: {fileID: 100100000, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+--- !u!1 &1282573432957400657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1284609381857505869, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+  m_PrefabInstance: {fileID: 8801387995939868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1155598010748464916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282573432957400657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454bc5686caf4b349cf243c855567ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: inAnimation
+      Entry: 6
+      Data: 
+    - Name: outAnimation
+      Entry: 6
+      Data: 
+    - Name: colorConfig
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorSchemeType,
+        Assembly-CSharp],[SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorScheme,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorSchemeType,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorScheme, Assembly-CSharp
+    - Name: LetterColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.3019608
+    - Name: 
+      Entry: 4
+      Data: 0.3019608
+    - Name: 
+      Entry: 4
+      Data: 0.3019608
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BgColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorScheme, Assembly-CSharp
+    - Name: LetterColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BgColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.9137255
+    - Name: 
+      Entry: 4
+      Data: 0.435294122
+    - Name: 
+      Entry: 4
+      Data: 0.6431373
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: SoW.Scripts.Core.UI.Screen.Game.Views.LetterColorScheme, Assembly-CSharp
+    - Name: LetterColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BgColor
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvasGroup: {fileID: 7289929898079584021}
+  rectTransform: {fileID: 3305606462943107516}
+  letterText: {fileID: 5305233930613001093}
+  letterBg: {fileID: 3931894141663184144}
+--- !u!224 &3305606462943107516 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3296805629568671136, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+  m_PrefabInstance: {fileID: 8801387995939868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3931894141663184144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3931537141112324364, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+  m_PrefabInstance: {fileID: 8801387995939868}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5305233930613001093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5296443125987725209, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+  m_PrefabInstance: {fileID: 8801387995939868}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &7289929898079584021 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 7292537596818701065, guid: 7a07891c0b8047846adda9bb4910ea61, type: 3}
+  m_PrefabInstance: {fileID: 8801387995939868}
+  m_PrefabAsset: {fileID: 0}
