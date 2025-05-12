@@ -265,7 +265,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: InAnimation
+    - Name: inAnimation
       Entry: 7
       Data: 0|SoW.Scripts.Core.UI.Animator.Fade, Assembly-CSharp
     - Name: delay
@@ -283,7 +283,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: OutAnimation
+    - Name: outAnimation
       Entry: 7
       Data: 1|SoW.Scripts.Core.UI.Animator.Fade, Assembly-CSharp
     - Name: delay
@@ -305,7 +305,6 @@ MonoBehaviour:
   rectTransform: {fileID: 1886905373487419105}
   levelText: {fileID: 8342211543452978165}
   layoutGroup: {fileID: 799957590638966040}
-  wordGridPrefab: {fileID: 7407858616011067842, guid: 55bdc03fa0e573946baaceb96f666b41, type: 3}
   inputCircle: {fileID: 3409244105767289301}
   inputResult: {fileID: 4085092441645686096}
 --- !u!1 &5582182064078684050
@@ -579,10 +578,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: InAnimation
+    - Name: inAnimation
       Entry: 6
       Data: 
-    - Name: OutAnimation
+    - Name: outAnimation
       Entry: 6
       Data: 
   canvasGroup: {fileID: 1642132171793560722}
@@ -815,14 +814,15 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: InAnimation
+    - Name: inAnimation
       Entry: 6
       Data: 
-    - Name: OutAnimation
+    - Name: outAnimation
       Entry: 6
       Data: 
   canvasGroup: {fileID: 849216762651133823}
   rectTransform: {fileID: 5503567062901124019}
+  letterSize: 70
   letterRoot: {fileID: 5542462573842480389}
 --- !u!225 &849216762651133823
 CanvasGroup:

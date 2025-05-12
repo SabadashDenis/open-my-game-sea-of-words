@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 0
     - Name: duration
       Entry: 4
-      Data: 0.25
+      Data: 0.1
     - Name: opacity
       Entry: 4
       Data: 1
@@ -80,7 +80,7 @@ MonoBehaviour:
       Data: 0
     - Name: duration
       Entry: 4
-      Data: 0.25
+      Data: 0.1
     - Name: opacity
       Entry: 4
       Data: 0

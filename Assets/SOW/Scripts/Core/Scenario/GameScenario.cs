@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 using SoW.Scripts.Core.Save._;
 using SoW.Scripts.Core.Scenario._;
@@ -10,12 +9,10 @@ namespace SoW.Scripts.Core.Scenario
     public class GameScenario : AsyncScenarioBase
     {
         private LevelScenario _levelScenario;
-        private LevelPassScenario _levelPassScenario;
         
         protected override void InitInternal(ScenarioData data)
         {
             _levelScenario = data.Scenario.GetScenario<LevelScenario>();
-            _levelPassScenario = data.Scenario.GetScenario<LevelPassScenario>();
         }
 
         protected override async UniTask AsyncPlayInternal(CancellationToken token)
@@ -30,8 +27,6 @@ namespace SoW.Scripts.Core.Scenario
                 
                 currentLevelData.ToNextLevel();
                 SaveSystem.Saver.Save<LevelScenarioData>();
-                
-                await _levelPassScenario.Play(new(currentLevelData.LevelIndex - 1), token).WaitForEnd(token);
             }
         }
 

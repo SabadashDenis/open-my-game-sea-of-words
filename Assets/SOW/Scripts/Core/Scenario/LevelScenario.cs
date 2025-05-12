@@ -5,15 +5,14 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 using SoW.Scripts.Core.Configs;
-using SoW.Scripts.Core.Pool;
 using SoW.Scripts.Core.Save._;
 using SoW.Scripts.Core.Scenario._;
 using SoW.Scripts.Core.UI.Screen.Game.Views;
 using SoW.Scripts.Core.Utility;
 using SoW.Scripts.Core.Utility.Extended;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SoW.Scripts.Core.Scenario
 {
@@ -43,7 +42,7 @@ namespace SoW.Scripts.Core.Scenario
             var commonLetters = WordsUtility.GetCommonLetters(_levelData.words);
             _gameScreen.InputCircle.SetupLetters(commonLetters);
             
-            Preset.FoundedWords.ForEach(word => _gameScreen.ShowWord(word, true));
+            Preset.FoundedWords.ForEach(word => _gameScreen.ShowWord(word, Token, true));
             
             Data.Input.Click.Released += ProcessInputFinish;
 
@@ -55,6 +54,8 @@ namespace SoW.Scripts.Core.Scenario
 
             await UniTask.WaitUntil(() => Preset.FoundedWords.Count == _levelData.words.Length, cancellationToken: token);
             await UniTask.Delay(TimeSpan.FromSeconds(Data.Config.Levels.EndLevelDelay), cancellationToken: token);
+            
+            await Data.Scenario.GetScenario<LevelPassScenario>().Play(new(Preset.LevelIndex), token).WaitForEnd(token);
         }
 
         private async UniTask<float> GetBestLettersFitSize(string[] words, int maxGrids)
@@ -66,8 +67,8 @@ namespace SoW.Scripts.Core.Scenario
 
             for (int i = 1; i <= maxGrids; i++)
             {
-                var nexGrid = _gameScreen.AddWordsGrid();
-                grids.Add(nexGrid);
+                var newGrid = _gameScreen.AddWordsGrid();
+                grids.Add(newGrid);
 
                 Canvas.ForceUpdateCanvases();
                 await UniTask.Yield();
@@ -145,7 +146,7 @@ namespace SoW.Scripts.Core.Scenario
 
             if (_levelData.words.Contains(inputStr) && !Preset.FoundedWords.Contains(inputStr))
             {
-                _gameScreen.ShowWord(inputStr);
+                _gameScreen.ShowWord(inputStr, Token);
                 Preset.FoundedWords.Add(inputStr);
             }
             

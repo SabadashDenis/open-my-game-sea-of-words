@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using SoW.Scripts.Core;
 using SoW.Scripts.Core.UI;
@@ -25,10 +26,8 @@ public class WordsGridLine : View
         }
     }
 
-    public async UniTask ShowWord(bool immediately = false)
+    public async UniTask ShowWord(CancellationToken token, bool immediately = false)
     {
-        var token = this.GetCancellationTokenOnDestroy();
-        
         foreach (var letterView in _letters)
         {
             if (!immediately)
@@ -36,7 +35,7 @@ public class WordsGridLine : View
                 await UniTask.Delay(TimeSpan.FromSeconds(showLetterDelay), cancellationToken: token);
             }
 
-            letterView.SetColorScheme(LetterColorSchemeType.Visible);
+            letterView.SetColorScheme(LetterColorSchemeType.Selected);
         }
     }
 

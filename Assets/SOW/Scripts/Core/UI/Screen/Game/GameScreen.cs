@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using SoW.Scripts.Core;
 using SoW.Scripts.Core.UI;
@@ -70,7 +71,8 @@ public class GameScreen : ScreenViewBase
             var cellsY = words.Length - (words.Length / currentGridsCount) * (currentGridsCount - 1); //max words count
             var cellsX = words.Max(word => word.Length); //longest word letters count
 
-            var gridUsefulSize = _wordGrids.First().LayoutGroup.GetUsefulSize(cellsY);
+            var grid = _wordGrids.First();
+            var gridUsefulSize = grid.LayoutGroup.GetUsefulSize(grid.RT, cellsY);
 
             var letterFitSize =
                 (gridUsefulSize - Vector2.right * (cellsX - 1) * 10f) / new Vector2(cellsX, cellsY); // Todo: refactor
@@ -98,8 +100,8 @@ public class GameScreen : ScreenViewBase
         SoWPool.I.WordGridsPool.Push(grid);
     }
 
-    public void ShowWord(string word, bool immediately = false)
+    public void ShowWord(string word, CancellationToken token, bool immediately = false)
     {
-        _words[word].ShowWord(immediately).Forget();
+        _words[word].ShowWord(token, immediately).Forget();
     }
 }
