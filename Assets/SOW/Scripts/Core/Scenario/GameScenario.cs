@@ -19,8 +19,6 @@ namespace SoW.Scripts.Core.Scenario
         {
             var currentLevelData = SaveSystem.Saver.Get<LevelScenarioData>();
             
-            this.Log(LogType.Info, $"Get Save! Level: [{currentLevelData.LevelIndex}], Words: [{currentLevelData.FoundedWords.Count}]");
-            
             while (!Token.IsCancellationRequested)
             {
                 await _levelScenario.Play(currentLevelData).WaitForEnd(token);

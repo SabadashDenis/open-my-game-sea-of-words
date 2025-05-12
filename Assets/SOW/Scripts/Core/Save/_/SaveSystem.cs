@@ -1,5 +1,4 @@
-﻿
-namespace SoW.Scripts.Core.Save._
+﻿namespace SoW.Scripts.Core.Save._
 {
     public class SaveSystem : SystemBase
     {

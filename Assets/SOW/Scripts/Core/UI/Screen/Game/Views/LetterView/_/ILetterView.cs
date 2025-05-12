@@ -2,6 +2,7 @@
 {
     public interface ILetterView
     {
+        void SetLetter(char letter);
         void SetSize(float pixelSize);
     }
 }

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Sirenix.OdinInspector;
 using SoW.Scripts.Core.Configs;
 using SoW.Scripts.Core.Save._;
 using SoW.Scripts.Core.Scenario._;
@@ -12,7 +10,6 @@ using SoW.Scripts.Core.UI.Screen.Game.Views;
 using SoW.Scripts.Core.Utility;
 using SoW.Scripts.Core.Utility.Extended;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace SoW.Scripts.Core.Scenario
 {
@@ -75,8 +72,6 @@ namespace SoW.Scripts.Core.Scenario
 
                 var lettersFitSize = _gameScreen.GetCurrentLettersFitSize(words);
 
-                this.Log(LogType.Info, $"Letters fit size: {lettersFitSize}, Grids[{i}]");
-
                 if (lettersFitSize > bestFitSize)
                 {
                     bestFitSize = lettersFitSize;
@@ -95,8 +90,6 @@ namespace SoW.Scripts.Core.Scenario
                     _gameScreen.RemoveGrid(lastGrid);
                 }
             }
-
-            this.Log(LogType.Info, $"Best fit size: {bestFitSize}, Grids[{bestGridsCount}]");
 
             return bestFitSize;
         }

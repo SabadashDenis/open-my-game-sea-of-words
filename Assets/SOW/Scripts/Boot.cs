@@ -1,4 +1,3 @@
-using System;
 using SoW.Scripts.Core;
 using SoW.Scripts.Core.Configs._;
 using SoW.Scripts.Core.Input._;
@@ -6,7 +5,6 @@ using SoW.Scripts.Core.Save._;
 using SoW.Scripts.Core.Scenario;
 using SoW.Scripts.Core.Scenario._;
 using UnityEngine;
-using LogType = SoW.Scripts.Core.LogType;
 
 public class Boot : MonoBehaviour
 {
@@ -33,7 +31,6 @@ public class Boot : MonoBehaviour
 
     private void OnDestroy()
     {
-        this.Log(LogType.Info, "Save all");
         SaveSystem.Saver.SaveAll();
     }
 }

@@ -4,7 +4,6 @@ using System.IO;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 using IOException = System.IO.IOException;
 
 namespace SoW.Scripts.Core.Configs
